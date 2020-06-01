@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+    <p>
+            You chose
+         {%if my_decision == "Comply"%} {{"TO COMPLY"}}
+         {% elif my_decision == "Not_comply" %} {{"NOT TO COMPLY"}}
+         {% elif my_decision == "Inspect" %} {{"TO INSPECT"}}
+         {% else %} {{"NOT TO INSPECT"}}
+        {%endif%}
+        and the other player chose
+        {%if opponent_decision == "Comply"%} {{"TO COMPLY"}}
+         {%elif opponent_decision == "Not_comply" %} {{"NOT TO COMPLY"}}
+         {%elif opponent_decision == "Inspect"%}{{"TO INSPECT"}}
+         {%else%} {{"NOT TO INSPECT"}}
+        {%endif%}
+
+    </p>
+
+    <p>
+        As a result, you earned {{ player.payoff }} in round # {{player.round_number}}.
+    </p>
+{% include Constants.instructions_template %}
+{% if player.round_number == 5 %}
+       <div class="alert alert-success">
+        <strong> You finished all trial rounds.</strong> The real game will start from the next round!
+       </div>{%else%} {%endif%}
+    {% next_button %}
+
+
+{% endblock %}

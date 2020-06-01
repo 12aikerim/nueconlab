@@ -1,0 +1,132 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{%block title%}
+Game Four
+{% endblock %}
+
+
+{% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+{% if player.role == 'inspector'%}
+
+    <p>
+    This game is very similar to the previous game. You will keep the role of the Agency. The strategies available to each player are similar to the previous game and the cost of environmental damage is again 50 points. Again, you will be matched with a different player (a Firm) in each round. And again, your decisions together with the decisions of the people that you will be matched with will determine your earnings.
+        In each round you will start with 60 points. But now you have two types of inspectors:
+    </p>
+            <ul>
+        <li>Expert inspectors cost {{expert|c}} but they can conduct a DETAILED INSPECTION, which increases the
+            chance of detection if the Firm is not complying.</li>
+        <li>Inexperienced inspectors cost just {{intern|c}} but they can conduct only a QUICK INSPECTION which
+            decreases the chance of detection if the Firm is not complying.</li>
+            </ul>
+        <p>
+            For your information, the firm also has an alternative option:
+        </p>
+        <ul>
+            <li>
+                The Firm can now submit some paperwork and pretend as if they are complying, which we call COMPLIANCE-ON-PAPER. This kind of paperwork costs the firm 10 points. Note that COMPLIANCE ON PAPER reduces the probability of detection but it does not prevent environmental damage.
+            </li>
+            <li>
+               In comparison, FULL COMPLIANCE costs 40 points to the Firm (as in the previous game). Full COMPLIANCE eliminates the possibility of a fine if the Agency sends Expert inspectors for DETAILED INSPECTION.
+            </li>
+        </ul>
+
+        <p>The probability of the catching the Firm and collecting a fine is determined according to the following:</p>
+      <ul>
+          <li>
+              If the Agency decides for a DETAILED INSPECTION and Firm decides to NOT COMPLY, the Firm will be caught and pay 50 points to the Agency.
+          </li>
+          <li>
+              If the Agency decides to conduct a QUICK INSPECTION and Firm decides to NOT COMPLY, the Firm will be caught (and will pay 50-points fine to the Agency) 50% of the time.
+          </li>
+          <li>
+              If the Agency decides to conduct a DETAILED INSPECTION and Firm chooses COMPLIANCE ON PAPER, the Firm will be caught (and will pay 50-points fine to the Agency) 90% of the time.
+          </li>
+          <li>
+              If the Agency decides to conduct a QUICK INSPECTION and Firm chooses COMPLIANCE ON PAPER, the Firm will not be caught and will not pay a fine.
+          </li>
+      </ul>
+        <p>
+            You will now play 5 trial and {{Constants.num_rounds}} real rounds of this game.If you have understood the game and the rules please click NEXT to begin playing.
+        </p>
+{% else %}
+     <p>
+        This game is very similar to the previous game. You will keep the role of a Firm.
+         The strategies available to each player are similar to the previous game and the cost of environmental damage is again 50 points.
+         Again, you will be matched with a different player (an Agency) in each round.
+         And again, your decisions together with the decisions of the players that you will be matched with will determine your earnings.
+     </p>
+        <p>
+            In each round you will start with 60 points. But now the Agency has two types of inspectors:
+    </p>
+
+            <ul>
+        <li>Expert inspectors cost the Agency 40 points but they can conduct a DETAILED INSPECTION, which increases the chance of catching the Firm when they are not complying.</li>
+        <li>Inexperienced inspectors cost the Agency just 10 points but they can conduct only a QUICK INSPECTION which lowers the probability of detection if the Firm is not complying.</li>
+            </ul>
+       <p>You, as the Firm, also have an alternative option: In addition to FULL COMPLIANCE, you can now submit some paperwork and pretend as if you are complying, which we call COMPLIANCE ON PAPER.
+           This kind of paperwork costs you 10 points in comparison to FULL COMPLAINCE which costs 40 points, as before. Note that COMPLIANCE ON PAPER reduces the probability of detection but it does not prevent environmental damage.
+           Full COMPLIANCE eliminates the possibility of a fine if the Agency sends Expert inspectors for DETAILED INSPECTION.
+       </p>
+          <p>The probability of the catching the Firm and collecting a fine is determined according to the following:</p>
+      <ul>
+          <li>
+              If the Agency decides for a DETAILED INSPECTION and Firm decides to NOT COMPLY, the Firm will be caught and pay 50 points to the Agency.
+          </li>
+          <li>
+              If the Agency decides to conduct a QUICK INSPECTION and Firm decides to NOT COMPLY, the Firm will be caught (and will pay 50-points fine to the Agency) 50% of the time.
+          </li>
+          <li>
+              If the Agency decides to conduct a DETAILED INSPECTION and Firm chooses COMPLIANCE ON PAPER, the Firm will be caught (and will pay 50-points fine to the Agency) 90% of the time.
+          </li>
+          <li>
+              If the Agency decides to conduct a QUICK INSPECTION and Firm chooses COMPLIANCE ON PAPER, the Firm will not be caught and will not pay a fine.
+          </li>
+      </ul>
+        <p>
+            You will now play 5 trial and {{Constants.num_rounds}} real rounds of this game.If you have understood the game and the rules please click NEXT to begin playing.
+        </p>
+{% endif %}
+    <!--    <p>You will collect the points according to the table below:</p>
+
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=3>Agency</th>
+        </tr>
+        <tr>
+            <th>DETAILED INSPECTION</th>
+            <th>QUICK INSPECTION</th>
+            <th>NO INSPECTION</th>
+        </tr>
+        <tr>
+            <th rowspan=3>FIRM</th>
+            <th>FULL COMPLIANCE</th>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FI}}</td>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FL }}</td>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FN }}</td>
+        </tr>
+        <tr>
+            <th>COMPLIANCE ON PAPERS</th>
+            <td>{{ Constants.firm_PF}}, {{ Constants.insp_PF}}</td>
+            <td>{{ Constants.firm_PL}}, {{ Constants.insp_PL }}</td>
+            <td>{{ Constants.firm_PN}}, {{ Constants.insp_PN }}</td>
+        </tr>
+        <tr>
+            <th>NO COMPLIANCE</th>
+            <td>{{ Constants.firm_NF}}, {{ Constants.insp_NF}}</td>
+            <td>{{ Constants.firm_NL}}, {{ Constants.insp_NL }}</td>
+            <td>{{ Constants.firm_NN}}, {{ Constants.insp_NN}}</td>
+        </tr>
+    </table>-->
+</div>
+</div>
+{% next_button %}
+{% endblock %}

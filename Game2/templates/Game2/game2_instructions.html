@@ -1,0 +1,120 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Game Two
+{% endblock %}
+{% block content %}
+<head>
+    <style>
+        ul {  margin: 0;}
+        ul.dashed { list-style-type: none;}
+        ul.dashed > li {text-indent: -5px;}
+        ul.dashed > li:before { content: "-";
+                                text-indent: 5px;}
+        </style>
+</head>
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+
+    <p>
+        This game is similar to Game One. You will keep your role (Player A or
+        Player B) assigned to you previously and you will again be paired with
+        another player randomly by the computer. You will not know the identity
+        of the person with whom you are paired each round. Your task is again to
+        make decisions as per your assigned role for {{Constants.num_rounds}} rounds.</p>
+        <p>
+        In this game, you will have three strategies, instead of two. Player A
+        can now move UP or MIDDLE or DOWN and Player B can move LEFT or
+        CENTER or RIGHT. You will not be able to see the other player’s choice until
+        you submit your choice and the other player will not see your choice. You
+        will earn points in each round according to the following rules:
+    </p>
+        <p>In each cell the number on the left indicates points for Player A and the number on the right
+            indicates points for Player B.</p>
+        <p>For example, upper right cell contains {{Constants.firm_fully_comply|c}} for Player A and {{Constants.insp_FN|c}} for
+        Player B.</p>
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=3>Player B</th>
+        </tr>
+        <tr>
+            <th>LEFT</th>
+            <th>CENTER</th>
+            <th>RIGHT</th>
+        </tr>
+        <tr>
+            <th rowspan=5>Player A</th>
+            <th>UP</th>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FI}}</td>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FL }}</td>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FN }}</td>
+        </tr>
+        <tr>
+            <th >MIDDLE</th>
+            <td>50 points, -30 points (with 10 % prob.) <p> </p>0 points, 20 points (with 90 % prob.)</td>
+            <td>{{ Constants.firm_PL}}, {{ Constants.insp_PL }}</td>
+            <td>{{ Constants.firm_PN}}, {{ Constants.insp_PN }}</td>
+        </tr>
+        <tr>
+            <th >DOWN</th>
+            <td>{{ Constants.firm_NF}}, {{ Constants.insp_NF}}</td>
+            <td>60 points, 0 points (with 50% prob.) <p> </p>10 points, 50 points (with 50% prob.)</td>
+            <td>{{ Constants.firm_NN}}, {{ Constants.insp_NN}}</td>
+        </tr>
+    </table>
+    <p>A) If you are Player A you will move UP, MIDDLE or DOWN.</p>
+         <ul>
+        <li> If you move UP you will earn {{ Constants.firm_fully_comply}}.</li>
+        <li>If you move MIDDLE, you will earn 0 or {{ Constants.firm_PL}} depending on Player B’s move.</li>
+        </ul>
+        <ul class = "dashed">
+        <li>If you move MIDDLE and Player B moves LEFT you will get 50 points (with 10% probability) or 0 points (with 90% probability),</li>
+        <li>If you move MIDDLE and Player B moves CENTER or RIGHT,you will get {{ Constants.firm_PL}} </li>
+        </ul>
+        <ul>
+            <li>If you move DOWN, you will earn {{ Constants.firm_NF}},  or {{ Constants.firm_NN}}  depending on Player B’s move.</li>
+        </ul>
+        <ul class="dashed">
+            <li>If you move DOWN and Player B moves LEFT you will get {{ Constants.firm_NF}} ,</li>
+            <li>If you move DOWN and Player B moves CENTER you will get 60 points (with 50% probability) or 10 points (with 50% probability),</li>
+            <li>If you move DOWN and Player B moves RIGHT you will get {{ Constants.firm_NN}}.</li>
+        </ul>
+
+
+     <p> B) If you are Player B you will move LEFT, CENTER or RIGHT.</p>
+        <p>
+     <ul>
+        <li>If you move LEFT you will earn {{ Constants.insp_FI}} or loose 30 points  depending on Player A’s move.</li>
+    </ul>
+    <ul class = "dashed">
+        <li>If you move LEFT and Player A moves UP or DOWN, you will get {{ Constants.insp_FI}}</li>
+        <li>If you move LEFT and Player A moves  MIDDLE, you will get 20 points(with 90% probability) or loose 30 points(with 10% probability).</li>
+    </ul>
+
+        <li>If you move CENTER, you will earn {{Constants.insp_FL}} or {{Constants.insp_PL}}  depending on Player B’s move.</li>
+    </ul>
+        <ul class = "dashed">
+            <li> If you move CENTER and Player A moves UP you will get {{Constants.insp_FL}},</li>
+            <li> If you move CENTER and Player A moves MIDDLE,you will get {{Constants.insp_PL}}</li>
+            <li> If you move CENTER and Player A moves DOWN, you will get 50 points (with 50% probability) or 0 points (with 50% probability)</li>
+        </ul>
+        <ul>
+        <li>If you move RIGHT, you will earn {{ Constants.insp_FN}} or {{Constants.insp_NN}} depending on Player A’s move.</li>
+    </ul>
+        <ul class = "dashed">
+            <li>If you move RIGHT and Player A moves UP, you will get {{ Constants.insp_FN}} </li>
+            <li>If you move RIGHT and Player A moves DOWN or MIDDLE, you will get {{Constants.insp_NN}}</li>
+        </ul>
+
+<p> You will now play 5 trial and {{Constants.num_rounds}} real rounds of this game. In each round you will see the payoff table and decide about your choice.
+    If you have understood the game and the rules please click NEXT to begin playing.</p>
+</div>
+</div>
+{% next_button %}
+{% endblock %}

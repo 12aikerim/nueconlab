@@ -1,0 +1,45 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Questions about the experiment
+{% endblock %}
+
+{% block content %}
+
+    <h5>
+        To what extent do you disagree/agree with the following statements on a scale of 1 (strongly disagree) to
+    5 (strongly agree).
+    </h5>
+<hr>
+<div class="container" style="alignment:center">
+    <div class="row">
+        <div class="col-sm-6">
+
+        </div>
+        <div class="col-sm-1">
+            Strongly agree
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-1">
+            Strongly disagree
+        </div>
+    </div>
+    <hr>
+
+    {% for field in form %}
+    <div class="row">
+        <div class="col-sm-6">
+            {{ field.label_tag }}
+        </div>
+        <div class="col-sm-4">
+            {{ field }}
+        </div>
+    </div>
+    <hr>
+  {% endfor %}
+</div>
+
+<button type="submit">Submit</button>
+{% endblock %}

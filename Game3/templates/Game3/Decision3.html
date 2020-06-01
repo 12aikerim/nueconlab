@@ -1,0 +1,100 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-sidebar w3-bar-block" style="width:30%;right:0">
+    <h4 class="w3-bar-item text-center">Info panel</h4>
+  <table class="table table-bordered text-center" style="width: auto;right:0">
+
+     <tr>
+         <td>Costs for Agency</td>
+         <td>Costs for Firm</td>
+     </tr>
+      <tr>
+          <td>Inspection costs -{{expert|c}}</td>
+          <td>Compliance costs {{cost|c}}</td>
+      </tr>
+      <tr>
+          <td>Environmental damage costs -{{environment|c}}</td>
+          <td>Penalty costs -{{fine|c}}</td>
+      </tr>
+      <tr>
+          <td>If you catch violation, firm pays fine of +{{fine|c}}</td>
+          <td></td>
+      </tr>
+  </table>
+</div>
+
+<div style="margin-right:25%">
+-->
+{% if player.role == 'firm' %}
+    <div class="form-group required">
+        <h5> Round # {{player.round_number}}</h5>
+        {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+        <p> You are a Firm. You start with {{Revenue|c}}. Make your choice accordingly.</p>
+        {% include Constants.instructions_template %}
+      <table class="table " style="width: auto;">
+
+        <tr>
+            <td>  </td>
+            <td><button name="decision" value="Comply" class="btn btn-primary btn-large">COMPLY</button></td>
+        <td><button name="decision" value="Not_comply" class="btn btn-primary btn-large">NOT COMPLY</button></td></tr>
+           <!-- <tr>
+                <td>INSPECT</td>
+                <td>{{Constants.ul}}</td>
+                <td>{{Constants.dl}}</td></tr>
+            <tr>
+                <td>NOT INSPECT</td>
+                <td>{{Constants.ur}}</td>
+                <td>{{Constants.dr}}</td>
+            </tr>-->
+        </table>
+
+    </div>
+{% else %}
+<div class="form-group required">
+        <h5> Round # {{player.round_number}}</h5>
+        {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+    <p> You are the environmental regulation agency.You start with {{Budget|c}}. Make your choice accordingly.</p>
+    {% include Constants.instructions_template %}
+      <table class="table " style="width: auto;">
+
+        <tr><td> </td>
+            <td><button name="decision" value="Inspect" class="btn btn-primary btn-large">INSPECT</button></td>
+        <td><button name="decision" value="Not_inspect" class="btn btn-primary btn-large">NOT INSPECT</button></tr>
+           <!-- <tr>
+                <td>COMPLY</td>
+                <td>{{Constants.lu}}</td>
+                <td>{{Constants.ru}}</td></tr>
+            <tr>
+                <td>NOT COMPLY</td>
+                <td>{{Constants.ld}}</td>
+                <td>{{Constants.rd}}</td>
+            </tr>-->
+        </table>
+    </div>
+{% endif %}
+{{ form.decision.errors }}
+
+
+{% endblock %}
+

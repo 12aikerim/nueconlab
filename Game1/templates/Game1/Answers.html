@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Answers
+{% endblock %}
+
+{% block content %}
+
+    <ol>
+        <li>Will you play against the computer in this experiment?</li>
+        <ul>
+        <li> Your answer: {{player.q1}}.</li>
+            <li>Correct answer: No</li>
+        </ul>
+        <li>Will your decisions affect the final payoff you will collect?</li>
+        <ul>
+        <li> Your answer: {{player.q2}}.</li>
+            <li>Correct answer: Yes</li>
+        </ul>
+        <li>Are payoffs from each round in every game added to your total earnings?</li>
+        <ul>
+        <li> Your answer: {{player.q3}}.</li>
+            <li>Correct answer: No</li>
+        </ul>
+    </ol>
+    <p>Review answers before starting the game.</p>
+
+    {% next_button %}
+{% endblock %}

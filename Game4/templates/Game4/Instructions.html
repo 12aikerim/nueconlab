@@ -1,0 +1,31 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+<h5> Payoff information </h5>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+         {% if player.role == 'firm'%}
+      <p><ul>
+        <li> If you decide to NOT COMPLY and The Agency chooses DETAILED INSPECTION, the you will be caught.The fine is {{Constants.fine|c}}</li>
+        <li>If you decide to NOT COMPLY and The Agency chooses QUICK INSPECTION, the you will be caught 50% of the time.</li>
+        <li> If you choose COMPLIANCE ON PAPERS which costs {{Constants.on_paper|c}} and The Agency chooses DETAILED INSPECTION, the you will be caught 90% of the time. </li>
+        <li>If you choose COMPLIANCE ON PAPERS and The Agency chooses QUICK INSPECTION, the you will not be caught.</li>
+        </ul>
+        </p>
+
+
+{%else%}
+        <ul>
+            <li> If you decide to conduct DETAILED INSPECTION which will cost you {{Constants.expert|c}} and Firm decides to NOT COMPLY, the Firm will be caught and pay fine of {{Constants.fine|c}}.</li>
+            <li>If you decide to conduct QUICK INSPECTION which will cost you {{Constants.intern|c}}and Firm decides to NOT COMPLY, you will catch them 50% of the time.</li>
+            <li> If you choose DETAILED INSPECTION and Firm chooses COMPLIANCE ON PAPERS, the Firm will be caught 90% of the time. </li>
+            <li>If you choose QUICK INSPECTION and Firm chooses COMPLIANCE ON PAPERS, the Firm will not be caught.</li>
+        </ul>
+
+
+ {%endif%}
+</div>
+</div>
+
+

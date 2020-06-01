@@ -1,0 +1,111 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+{% if player.role == 'firm' %}
+<div class="form-group required">
+     <h5> Round # {{player.round_number}}</h5>
+    {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+    <p> You are Player A. Make your choice accordingly.</p>
+    <p>In each cell the number on the left indicates points for YOU and the number on the right
+            indicates points for Player B.</p>
+        <p>For example, upper right cell contains {{Constants.firm_fully_comply|c}} for YOU and {{Constants.insp_FN|c}} for
+        Player B.</p>
+
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="3">Player B</th>
+            </tr>
+            <tr>
+                <th>LEFT</th>
+                <th>CENTER</th>
+                <th>RIGHT</th>
+            </tr>
+            <tr>
+                <th rowspan="5"><span>You</span></th>
+                <td><button name="decision" value="Fully_Comply" class="btn btn-primary btn-large">UP</button></td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FI}}</td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FL }}</td>
+                 <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FN }}</td>
+            </tr>
+            <tr>
+                <td ><button name="decision" value="Partially_Comply" class="btn btn-primary btn-large">MIDDLE</button></td>
+                <td>50 points, -30 points (10 % prob.) <p> </p>0 points, 20 points (90 % prob.)</td>
+            <td>{{ Constants.firm_PL}}, {{ Constants.insp_PL }}</td>
+            <td>{{ Constants.firm_PN}}, {{ Constants.insp_PN }}</td>
+            </tr>
+            <tr>
+                <td ><button name="decision" value="Not_Comply" class="btn btn-primary btn-large">DOWN</button></td>
+                <td>{{ Constants.firm_NF}}, {{ Constants.insp_NF}}</td>
+            <td>60 points, 0 points (50% prob.) <p> </p>10 points, 50 points (50% prob.)</td>
+            <td>{{ Constants.firm_NN}}, {{ Constants.insp_NN}}</td>
+        </tr>
+
+        </table>
+</div>
+{% else %}
+<div class="form-group required">
+     <p> Round # {{player.round_number}}</p>
+    {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+    <p> You are Player B. Make your choice accordingly.</p>
+    <p>In each cell the number on the left indicates points for Player A and the number on the right
+            indicates points for YOU.</p>
+        <p>For example, upper right cell contains {{Constants.firm_fully_comply|c}} for Player A and {{Constants.insp_FN|c}} for
+        YOU.</p>
+       <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="5"><span>You</span></th> </tr>
+            <tr>
+                <th> </th>
+                <th> </th>
+            <td ><button name="decision" value="Full_Inspection" class="btn btn-primary btn-large">LEFT</button></td>
+                <td ><button name="decision" value="Light_Inspection" class="btn btn-primary btn-large">CENTER</button></td>
+                <td ><button name="decision" value="No_Inspection" class="btn btn-primary btn-large">RIGHT</button></td>
+            </tr>
+            <tr> <th rowspan="5">Player A</th>
+                <th>UP</th>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FI}}</td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FL }}</td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FN }}</td
+            </tr>
+
+            <tr>
+                <th >MIDDLE</th>
+                <td>50 points, -30 points (10 % prob.) <p> </p>0 points, 20 points (90 % prob.</td>
+            <td>{{ Constants.firm_PL}}, {{ Constants.insp_PL }}</td>
+            <td>{{ Constants.firm_PN}}, {{ Constants.insp_PN }}</td>
+        </tr>
+            <tr>
+                <th r>DOWN</th>
+                <td>{{ Constants.firm_NF}}, {{ Constants.insp_NF}}</td>
+            <td>60 points, 0 points (50% prob.) <p> </p>10 points, 50 points (50% prob.)</td>
+            <td>{{ Constants.firm_NN}}, {{ Constants.insp_NN}}</td>
+        </tr>
+        </table>
+    </div>
+{% endif %}
+
+{{ form.decision.errors }}
+
+
+{% endblock %}
+

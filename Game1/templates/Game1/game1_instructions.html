@@ -1,0 +1,84 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Game One
+{% endblock %}
+{% block content %}
+<head>
+    <style>
+        ul {  margin: 0;}
+        ul.dashed { list-style-type: none;}
+        ul.dashed > li {text-indent: -5px;}
+        ul.dashed > li:before { content: "-";
+                                text-indent: 5px;}
+        </style>
+</head>
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+    <h3>
+        Instructions
+    </h3>
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+
+    <p>
+        In this game both players (Player A and B) will have two options. You will not be able to see the other player’s choice until you submit your choice and the other player will not see your choice.
+        You will earn points in each round according to the following table:
+    </p>
+         <p>In each cell the number on the left indicates points for Player A and the number on the right
+            indicates points for Player B.</p>
+        <p>For example, upper right cell indicates {{Constants.ur|c}} for Player A and {{Constants.ru|c}} for Player B.</p>
+        <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=2>Player B</th>
+        </tr>
+        <tr>
+            <th>LEFT</th>
+            <th>RIGHT</th>
+        </tr>
+        <tr>
+            <th rowspan=2><span class="rotate90">Player A</span></th>
+            <th>UP</th>
+            <td>{{ Constants.ul}}, {{ Constants.lu}}</td>
+            <td>{{ Constants.ur}}, {{ Constants.ru }}</td>
+        </tr>
+        <tr>
+            <th>DOWN</th>
+            <td>{{ Constants.dl }},{{Constants.ld}}</td>
+            <td>{{ Constants.dr}}, {{ Constants.rd}}</td>
+        </tr>
+    </table>
+        <h6>Detailed explanations: </h6>
+    <p>A) If you are player A you will choose UP or DOWN.</p>
+        <ul>
+        <li> If you choose UP you will earn {{Constants.ul}}.</li>
+        <li> If you choose DOWN, you will earn </li>
+        </ul>
+        <ul class = "dashed">
+        <li>{{Constants.dl}} if Player B moves LEFT</li>
+        <li>{{Constants.dr}} if Player B moves RIGHT</li>
+        </ul>
+
+
+     <p> B) If you are Player B you can choose LEFT or RIGHT.</p>
+        <p>
+     <ul>
+        <li>If you choose LEFT you will earn {{Constants.lu}} .</li>
+        <li>If you choose RIGHT, you will earn </li>
+    </ul>
+    <ul class = "dashed">
+        <li>{{Constants.ru}} if Player A moves UP</li>
+        <li>{{Constants.rd}} if Player A moves DOWN.</li>
+    </ul>
+
+<p> You will now play 5 trial and {{Constants.num_rounds}} real rounds of this game. In each round you will see the payoff table and decide about your choice.
+    If you have understood the game and the rules please click NEXT to begin playing.</p>
+</div>
+</div>
+{% next_button %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Survey
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        In this questionnaire we will ask you a few questions about yourself
+        and about the experiment. Please answer the following questions and submit your responses. Your
+        answers will only be used for research purposes and will not include any identifiable information. Once
+        you answer all questions and submit, please wait until we announce your number to receive your cash reward.
+    </p>
+
+    {% formfields %}
+
+
+    {% next_button %}
+
+{% endblock %}

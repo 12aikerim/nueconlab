@@ -1,0 +1,139 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{%block title%}
+Game Three
+{% endblock %}
+{% block content %}
+<head>
+    <style>
+        ul {  margin: 0;}
+        ul.dashed { list-style-type: none;}
+        ul.dashed > li {text-indent: -5px;}
+        ul.dashed > li:before { content: "-";
+                                text-indent: 5px;}
+        </style>
+</head>
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+{% if player.role == 'firm'%}
+
+    <p>
+  In this game you are assigned the role of a Firm. You will be paired with another player who is assigned the role of an environmental regulation agency (The Agency). In each round, you will start with 60 points.
+   </p>
+        <p> You have two options:</p>
+        <ol>
+        <li>COMPLY with the environmental regulations</li>
+        or
+        <li>NOT COMPLY with the environmental regulations.</li>
+    </ol>
+      <p>  The agency can  decide between two options: to INSPECT or NOT INSPECT you.
+    </p>
+        <ul>
+            <li>If you decide to COMPLY, you will pay {{cost|c}} for cost of compliance. Your net payoff in one round will be 60-40=20 points.</li>
+            <li>If you decide to NOT COMPLY and the Agency decides to INSPECT you, you will pay a fine (50 points) for violating environmental regulations. Your final payoff in that round will be {{Constants.dl}}</li>
+            <li>•	If you decide to NOT COMPLY and the Agency decides to NOT INSPECT you, you will not pay any penalty and will keep 60 points for the round.</li>
+        </ul>
+       <p>
+           For your information, the Agency also starts with {{Budget|c}}, and the cost of inspection is {{expert|c}} for them. If you choose NOT COMPLY, the Agency will loose {{environment|c}} due to environmental damage.
+       </p>
+    <p>
+ The player you will be paired in each round will change randomly. You will NOT be playing against the same Firm player. Again, you will not be able to see the other player's choice before you submit your decision. The Firm will not be able to see your decision before submitting his/her decision.
+    </p>
+    <p>
+        You will now play 5 trial and {{Constants.num_rounds}} real rounds of this game.If you have understood the game and the rules please click NEXT to begin playing.
+    </p>
+
+{%else%}
+        <p>
+        In this game you are assigned the role of the environmental regulation agency. You will be paired with another
+        player who is assigned the role of a Firm. In each round, you will start with {{Budget|c}}. You have two options:
+        <ol>
+        <li>INSPECT the firm</li>
+        or
+        <li>NOT INSPECT the firm.</li>
+    </ol>
+        <p>The firm will decide between two options: to COMPLY or NOT COMPLY with environmental regulations.
+            If the Firm does not comply you will lose {{environment|c}} due to the environmental damage.
+        That means, your payoff will be 60-50 = 10 points.</p>
+        <p>You can choose to INSPECT the Firm.
+            The inspection will cost you {{expert|c}}.
+        If you decide to INSPECT and the Firm is NOT COMPLYING, you will collect {{fine|c}} from the Firm.
+            Then your payoff will be 60-50+50-40=20.</p>
+        <p> For your information, the Firm also starts with {{Revenue|c}}, and the cost of compliance paid by the Firm is {{cost|c}} (paid by the Firm). </p>
+        <p>The player you will be paired in each round will change randomly. You will NOT be playing against the same Firm player. Again, you will not be able to see the other player's choice before you submit your decision.
+            The Firm will not be able to see your decision before submitting his/her decision.</p>
+        <p>You will now play 5 trial and {{Constants.num_rounds}} real rounds of this game.If you have understood the game and the rules please click NEXT to begin playing.</p>
+    </div>
+    </div>
+
+ {% endif %}
+ {% next_button %}
+{%endblock%}
+    <!--
+    Version with tables.
+    <p>
+        This game is between a firm (The Firm) and an environmental regulation
+agency (The Agency). If you were Player A, you will get the role of the Firm.
+        If you were Player B, you will get the role of the Agency. Each firm will be
+randomly paired with an agency.
+    </p>
+    <p>
+        In each round both players will start with 70 points. In each round,
+the Firm will choose to COMPLY or NOT COMPLY and the Agency will
+choose to INSPECT or NOT INSPECT. Players will not be able to see the
+other player’s choice before they make their decision. The player you will be
+paired will change randomly from round to round. The points you earn in
+a round will depend on the decisions made by you and the person you are
+paired with in that round. The following rules will determine the Firm’s and
+the Agency’s earnings:
+    </p>
+     <ul>
+         <li><b>If you are The Agency:</b> You do not know if the Firm is complying with environmental regulations.
+             If the Firm is NOT complying with the regulations you will loose 40 points. You can decide to INSPECT the Firm, which costs you 30 points.</li>
+     </ul>
+        <ul class="dashed">
+            <li>If you INSPECT and find out that the Firm is already complying, your net points will be 70-30=40 points.</li>
+            <li>If you INSPECT and find out that the Firm is NOT complying, you will collect a fine equal to 40 points. In this case your net points will be 70-40+40-30=40 points.</li>
+            <li>If you decide NOT TO INSPECT and the Firm is NOT complying, your net points will be 70-40=30 points.</li>
+            <li>If you decide NOT TO INSPECT but the Firm is already complying, there will be no costs and your net points will be 70 points.</li>
+        </ul>
+     <ul>
+         <li><b>If you are The Firm:</b>Complying with the environmental regulations costs you 30 points. You will decide whether to COMPLY or to NOT COMPLY with the regulations.</li>
+     </ul>
+        <ul class="dashed">
+            <li>If you COMPLY your net points will be 70-30=40 points.</li>
+            <li>If you DO NOT COMPLY and the Agency decides to INSPECT, you will pay a fine equal to 40 points. In this case your net points will be 70-40=30 points.</li>
+            <li>If you DO NOT COMPLY and the Agency decides NOT TO INSPECT you will have no costs and your net points will be 70 points.</li>
+        </ul>
+    <p>In the following table we summarize these rules.
+    <p>In each cell the number on the left indicates points for the Firm and the number on the right indicates points for the Agency.</p>
+        <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=2>Agency</th>
+        </tr>
+        <tr>
+            <th>INSPECT</th>
+            <th>NOT INSPECT</th>
+        </tr>
+        <tr>
+            <th rowspan=2>Firm</th>
+            <th>COMPLY</th>
+            <td>{{ Constants.ul}}, {{ Constants.lu}}</td>
+            <td>{{ Constants.ur}}, {{ Constants.ru }}</td>
+        </tr>
+        <tr>
+            <th>NOT COMPLY</th>
+            <td>{{ Constants.dl }},{{Constants.ld}}</td>
+            <td>{{ Constants.dr}}, {{ Constants.rd}}</td>
+        </tr>
+    </table>
+<p> You will now play 20 rounds of this game. In each round you will see the payoff table and decide about your choice.
+    If you have understood the game and the rules please click I AM READY to begin playing.</p>-->
+
+

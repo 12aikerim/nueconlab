@@ -1,0 +1,57 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+<h5> Payoff table </h5>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+
+         <p>In each cell the number on the left indicates points for Player A and the number on the right
+            indicates points for Player B.</p>
+
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=3>Player B</th>
+        </tr>
+        <tr>
+            <th>LEFT</th>
+            <th>CENTER</th>
+            <th>RIGHT</th>
+        </tr>
+        <tr>
+            <th rowspan=5>Player A</th>
+            <th>UP</th>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FI}}</td>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FL }}</td>
+            <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FN }}</td>
+        </tr>
+        <tr>
+            <th rowspan="2">MIDDLE</th>
+            <td>50 points(10% prob.), -30 points (10 % prob.)</td>
+            <td>{{ Constants.firm_PL}}, {{ Constants.insp_PL }}</td>
+            <td>{{ Constants.firm_PN}}, {{ Constants.insp_PN }}</td>
+        </tr>
+        <tr>
+             <td>0 points(90% prob.), 20 points (90 % prob.)</td>
+            <td> </td>
+            <td>   </td>
+        </tr>
+        <tr>
+            <th rowspan="2">DOWN</th>
+            <td>{{ Constants.firm_NF}}, {{ Constants.insp_NF}}</td>
+            <td>60 points (50% prob.), 0 points (50% prob.)</td>
+            <td>{{ Constants.firm_NN}}, {{ Constants.insp_NN}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>10 points (50% prob.), 50 points (50% prob.)</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+</div>
+
+

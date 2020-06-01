@@ -1,0 +1,186 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-sidebar w3-bar-block" style="width:30%;right:0">
+    <h4 class="w3-bar-item text-center">Info panel</h4>
+  <table class="table table-bordered text-center" style="width: auto;right:0">
+
+     <tr>
+         <td>Costs for Agency</td>
+         <td>Costs for Firm</td>
+     </tr>
+      <tr>
+          <td>Detailed Inspection costs -{{expert|c}}</td>
+          <td>Full Compliance costs -{{cost|c}}}</td>
+      </tr>
+      <tr>
+          <td>Quick inspection costs -{{intern|c}}</td>
+          <td>Compliance just on papers costs -{{on_paper|c}}</td>
+      </tr>
+      <tr>
+          <td>Environmental damage costs -{{environment|c}}</td>
+          <td>Penalty costs {{fine|c}}</td>
+      </tr>
+      <tr>
+          <td>If you catch violation, firm pays fine of +{{fine|c}}</td>
+          <td></td>
+      </tr>
+  </table>
+</div>-->
+{% if player.role == 'firm' %}
+    <div class="form-group required">
+        <h5> Round # {{player.round_number}}</h5>
+        {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+
+        <p> You are the Firm. You start with {{Budget|c}}. Make your choice accordingly from options below.</p>
+        <table class="table " style="width: auto;">
+        <tr>
+            <td> </td>
+            <td><button name="decision" value="Fully_Comply" class="btn btn-primary btn-large">FULL COMPLIANCE</button></td></td>
+        <td><button name="decision" value="Partially_Comply" class="btn btn-primary btn-large">COMPLIANCE ON PAPER</button>
+        <td><button name="decision" value="Not_Comply" class="btn btn-primary btn-large">NO COMPLIANCE</button></td>
+        </tr>
+               {% include Constants.instructions_template %}
+        <!--<tr>
+            <td>DETAILED INSPECTION</td>
+            <td>{{Constants.firm_fully_comply}}</td>
+            <td>{{Constants.firm_PF}}(90%) or {{Constants.firm_PF10}}(10%)</td>
+            <td>{{ Constants.firm_NF}}</td>
+        </tr>
+            <tr>
+            <td>QUICK INSPECTION</td>
+            <td>{{Constants.firm_fully_comply}}</td>
+            <td>{{Constants.firm_PL}}</td>
+            <td>{{Constants.firm_NL}}</td>
+            </tr>
+        <tr>
+            <td>NO INSPECTION</td>
+            <td>{{Constants.firm_fully_comply}}</td>
+            <td>{{Constants.firm_PN}}</td>
+            <td>{{Constants.firm_NN}}</td>
+        </tr>-->
+
+        </table>
+
+        <!--<table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="3">Player B</th>
+            </tr>
+            <tr>
+                <th>LEFT</th>
+                <th>CENTER</th>
+                <th>RIGHT</th>
+            </tr>
+            <tr>
+                <th rowspan="3"><span>You</span></th>
+                <td><button name="decision" value="Fully_Comply" class="btn btn-primary btn-large">UP</button></td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FI}}</td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FL }}</td>
+                 <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FN }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Partially_Comply" class="btn btn-primary btn-large">MIDDLE</button></td>
+                <td>{{ Constants.firm_PF}}, {{ Constants.insp_PF}}</td>
+                <td>{{ Constants.firm_PL}}, {{ Constants.insp_PL }}</td>
+                <td>{{ Constants.firm_PN}}, {{ Constants.insp_PN }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Not_Comply" class="btn btn-primary btn-large">DOWN</button></td>
+                <td>{{ Constants.firm_NF}}, {{ Constants.insp_NF}}</td>
+                <td>{{ Constants.firm_NL}}, {{ Constants.insp_NL }}</td>
+                <td>{{ Constants.firm_NN}}, {{ Constants.insp_NN}}</td>
+            </tr>
+        </table>-->
+    </div>
+{% else %}
+<div class="form-group required">
+        <h5> Round # {{player.round_number}}</h5>
+        {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+
+    <p> You are the Agency. You start with {{Budget|c}}. Make your choice accordingly from options below.</p>
+        <table class="table " style="width: auto;">
+        <tr><td> </td>
+            <td ><button name="decision" value="Full_Inspection" class="btn btn-primary btn-large">DETAILED INSPECTION</button></td>
+            <td ><button name="decision" value="Light_Inspection" class="btn btn-primary btn-large">QUICK INSPECTION</button></td>
+            <td ><button name="decision" value="No_Inspection" class="btn btn-primary btn-large">NO INSPECTION</button></td>
+        </tr>
+               {% include Constants.instructions_template %}
+            <!--<tr>
+            <td>FULL COMPLIANCE</td>
+            <td>{{Constants.insp_FI}}</td>
+            <td>{{Constants.insp_FL}}</td>
+            <td>{{ Constants.insp_FN}}</td>
+        </tr>
+            <tr>
+            <td>PARTIAL COMPLIANCE</td>
+            <td>{{Constants.insp_PF}}</td>
+            <td>{{Constants.insp_PL}}</td>
+            <td>{{Constants.insp_PN}}</td>
+            </tr>
+        <tr>
+            <td>NO COMPLIANCE</td>
+            <td>{{Constants.insp_NF}}</td>
+            <td>{{Constants.insp_NL}}(90%) or {{Constants.insp_NF10}}(10%)</td>
+            <td>{{Constants.insp_NN}}</td>
+        </tr>-->
+
+        </table>
+        <!--<table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="5"><span>You</span></th> </tr>
+            <tr>
+                <th> </th>
+                <th> </th>
+            <td ><button name="decision" value="Full_Inspection" class="btn btn-primary btn-large">LEFT</button></td>
+                <td ><button name="decision" value="Light_Inspection" class="btn btn-primary btn-large">CENTER</button></td>
+                <td ><button name="decision" value="No_Inspection" class="btn btn-primary btn-large">RIGHT</button></td>
+            </tr>
+            <tr> <th rowspan="3">Player A</th>
+                <th>UP</th>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FI}}</td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FL }}</td>
+                <td>{{ Constants.firm_fully_comply}}, {{ Constants.insp_FN }}</td
+            </tr>
+
+            <tr>
+                <th>MIDDLE</th>
+                <td>{{ Constants.firm_PF}}, {{ Constants.insp_PF}}</td>
+                 <td>{{ Constants.firm_PL}}, {{ Constants.insp_PL }}</td>
+                <td>{{ Constants.firm_PN}}, {{ Constants.insp_PN }}</td>
+            </tr>
+            <tr>
+                <th>DOWN</th>
+                <td>{{ Constants.firm_NF}}, {{ Constants.insp_NF}}</td>
+                <td>{{ Constants.firm_NL}}, {{ Constants.insp_NL }}</td>
+                <td>{{ Constants.firm_NN}}, {{ Constants.insp_NN}}</td>
+            </tr>
+        </table>-->
+    </div>
+{% endif %}
+
+{{ form.decision.errors }}
+
+
+{% endblock %}
+

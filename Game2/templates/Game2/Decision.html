@@ -1,0 +1,84 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+{% if player.role == 'inspector' %}
+    <div class="form-group required">
+        <p> Round # {{player.round_number}}</p>
+        <p> You are Inspector. Make your choice accordingly</p>
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="3">Firm</th>
+            </tr>
+            <tr>
+                <th>Fully Comply</th>
+                <th>Partially comply</th>
+                <th>Not comply</th>
+            </tr>
+            <tr>
+                <th rowspan="3"><span>You</span></th>
+                <td><button name="decision" value="Full_Inspection" class="btn btn-primary btn-large">I will inspect FULLY</button></td>
+                <td>{{ Constants.insp_FI}}, {{ Constants.firm_fully_comply}}</td>
+                <td>{{ Constants.insp_PF}}, {{ Constants.firm_PF }}</td>
+                <td>{{ Constants.insp_NF}}, {{ Constants.firm_NF }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Light_Inspection" class="btn btn-primary btn-large">I will inspect LIGHTLY</button></td>
+                <td>{{ Constants.insp_FL}}, {{ Constants.firm_fully_comply}}</td>
+                <td>{{ Constants.insp_PL}}, {{ Constants.firm_PL }}</td>
+                <td>{{ Constants.insp_NL}}, {{ Constants.firm_NL }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="No_Inspection" class="btn btn-primary btn-large">I will NOT inspect</button></td>
+                <td>{{ Constants.insp_FN}}, {{ Constants.firm_fully_comply}}</td>
+                <td>{{ Constants.insp_PN}}, {{ Constants.firm_PN }}</td>
+                <td>{{ Constants.insp_NN}}, {{ Constants.firm_NN}}</td>
+            </tr>
+        </table>
+    </div>
+{% else %}
+<div class="form-group required">
+     <p> Round # {{player.round_number}}</p>
+    <p> You are Firm. Make your choice accordingly</p>
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="3">Inspector</th>
+            </tr>
+            <tr>
+                <th>Full Inspection</th>
+                <th>Light Inspection</th>
+                <th>No inspection</th>
+            </tr>
+            <tr>
+                <th rowspan="3"><span>You</span></th>
+                <td><button name="decision" value="Fully_Comply" class="btn btn-primary btn-large">I will comply FULLY</button></td>
+                <td>{{ Constants.insp_FI}}, {{ Constants.firm_fully_comply}}</td>
+                <td>{{ Constants.insp_PF}}, {{ Constants.firm_PF }}</td>
+                <td>{{ Constants.insp_NF}}, {{ Constants.firm_NF }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Partially_Comply" class="btn btn-primary btn-large">I will comply PARTIALLY</button></td>
+                <td>{{ Constants.insp_FL}}, {{ Constants.firm_fully_comply}}</td>
+                <td>{{ Constants.insp_PL}}, {{ Constants.firm_PL }}</td>
+                <td>{{ Constants.insp_NL}}, {{ Constants.firm_NL }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Not_Comply" class="btn btn-primary btn-large">I will NOT comply</button></td>
+                <td>{{ Constants.insp_FN}}, {{ Constants.firm_fully_comply}}</td>
+                <td>{{ Constants.insp_PN}}, {{ Constants.firm_PN }}</td>
+                <td>{{ Constants.insp_NN}}, {{ Constants.firm_NN}}</td>
+            </tr>
+        </table>
+    </div>
+{% endif %}
+{{ form.decision.errors }}
+{% include Constants.instructions_template %}
+
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+<h5> Payoff table </h5>
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+
+
+        <p>In each cell the number on the left indicates points for Player A and the number on the right
+            indicates points for Player B.</p>
+
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=2>Player B</th>
+        </tr>
+        <tr>
+            <th>LEFT</th>
+            <th>RIGHT</th>
+        </tr>
+        <tr>
+            <th rowspan=2><span class="rotate90">Player A</span></th>
+            <th>UP</th>
+            <td>{{ Constants.ul}}, {{ Constants.lu}}</td>
+            <td>{{ Constants.ur}}, {{ Constants.ru }}</td>
+        </tr>
+        <tr>
+            <th>DOWN</th>
+            <td>{{ Constants.dl }},{{Constants.ld}}</td>
+            <td>{{ Constants.dr}}, {{ Constants.rd}}</td>
+        </tr>
+    </table>
+
+</div>
+</div>
+
+

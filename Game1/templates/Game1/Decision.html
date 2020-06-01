@@ -1,0 +1,66 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+{% if player.role == 'Inspector' %}
+    <div class="form-group required">
+        <h5> Round # {{player.round_number}}</h5>
+        <p> You are Inspector. Make your choice accordingly</p>
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="2">Firm</th>
+            </tr>
+            <tr>
+                <th>Comply</th>
+                <th>Not comply</th>
+            </tr>
+            <tr>
+                <th rowspan="2"><span>You</span></th>
+                <td><button name="decision" value="Inspect" class="btn btn-primary btn-large">I will inspect</button></td>
+                <td>{{ Constants.insp_IC}}, {{ Constants.firm_IC}}</td>
+                <td>{{ Constants.insp_IN}}, {{ Constants.firm_IN }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Not_inspect" class="btn btn-primary btn-large">I will not inspect</button></td>
+                <td>{{ Constants.insp_NC }},{{Constants.firm_NC}}</td>
+                <td>{{ Constants.insp_NN}}, {{ Constants.firm_NN }}</td>
+            </tr>
+        </table>
+    </div>
+{% else %}
+<div class="form-group required">
+     <p> Round # {{player.round_number}}</p>
+    <p> You are Firm. Make your choice accordingly</p>
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="2">Inspector</th>
+            </tr>
+            <tr>
+                <th>Inspect</th>
+                <th>Not inspect</th>
+            </tr>
+            <tr>
+                <th rowspan="2"><span>You</span></th>
+                <td><button name="decision" value="Comply" class="btn btn-primary btn-large">I will comply</button></td>
+                <td>{{ Constants.insp_IC}}, {{ Constants.firm_IC}}</td>
+                <td>{{ Constants.insp_IN}}, {{ Constants.firm_IN }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Not_comply" class="btn btn-primary btn-large">I will not comply</button></td>
+                <td>{{ Constants.insp_NC }},{{Constants.firm_NC}}</td>
+                <td>{{ Constants.insp_NN}}, {{ Constants.firm_NN }}</td>
+            </tr>
+        </table>
+    </div>
+{% endif %}
+{{ form.decision.errors }}
+{% include Constants.instructions_template %}
+
+{% endblock %}
+

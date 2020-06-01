@@ -1,0 +1,94 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+{% if player.role == 'firm' %}
+    <div class="form-group required">
+        <h5> Round # {{player.round_number}}</h5>
+        {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+
+        <p> You are Player A. Make your choice accordingly.</p>
+        <p>In each cell the number on the left indicates points for YOU and the number on the right
+            indicates points for Player B.</p>
+        <p>For example, upper right cell indicates {{Constants.ur|c}} for YOU and {{Constants.ru|c}} for Player B.</p>
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="2"></th>
+                <th colspan="2">Player B</th>
+            </tr>
+            <tr>
+                <th>LEFT</th>
+                <th>RIGHT</th>
+            </tr>
+            <tr>
+                <th rowspan="2"><span>You</span></th>
+                <td><button name="decision" value="Comply" class="btn btn-primary btn-large">UP</button></td>
+                <td>{{ Constants.ul}}, {{ Constants.lu}}</td>
+                <td>{{ Constants.ur}}, {{ Constants.ru }}</td>
+            </tr>
+            <tr>
+                <td><button name="decision" value="Not_comply" class="btn btn-primary btn-large">DOWN</button></td>
+                <td>{{ Constants.dl }},{{Constants.ld}}</td>
+                <td>{{ Constants.dr}}, {{ Constants.rd}}</td>
+            </tr>
+        </table>
+
+    </div>
+{% else %}
+<div class="form-group required">
+     <h5> Round # {{player.round_number}} </h5>
+    {% if player.round_number < 6 %}
+       <div class="alert alert-info">
+        This is a trial round.
+       </div>
+        {%elif player.round_number == 6 %}
+        <div class="alert alert-warning">
+            <strong>Attention!</strong> Real game rounds start now.
+        </div> {%else%} {%endif%}
+    <p> You are Player B. Make your choice accordingly.</p>
+    <p>In each cell the number on the left indicates points for Player A and the number on the right
+            indicates points for YOU.</p>
+        <p>For example, upper right cell indicates {{Constants.ur|c}} for Player A and {{Constants.ru|c}} for YOU.</p>
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="4"><span>You</span></th> </tr>
+            <tr>
+                <th> </th>
+                <th> </th>
+            <td colspan=><button name="decision" value="Inspect" class="btn btn-primary btn-large">LEFT</button></td>
+                <td colspan=><button name="decision" value="Not_inspect" class="btn btn-primary btn-large">RIGHT</button></td>
+            </tr>
+            <tr> <th rowspan="2">Player A</th>
+                <th>UP</th>
+                <td >{{ Constants.ul}}, {{ Constants.lu}}</td>
+                <td>{{ Constants.ur}}, {{ Constants.ru }}</td>
+            </tr>
+
+            <tr>
+                <th>DOWN</th>
+                <td>{{ Constants.dl }},{{Constants.ld}}</td>
+                <td>{{ Constants.dr}}, {{ Constants.rd}}</td>
+            </tr>
+        </table>
+    </div>
+{% endif %}
+{{ form.decision.errors }}
+
+
+{% endblock %}
+

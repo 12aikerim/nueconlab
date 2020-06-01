@@ -1,0 +1,54 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+<h5> Payoff information </h5>
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+       {% if player.role == 'firm'%}
+      <p><ul>
+            <li>If you decide to COMPLY, the cost is {{Constants.cost|c}}. So, your final score in this round will be {{Constants.ul}}.</li>
+            <li>If you decide to NOT COMPLY and the Agency decides to INSPECT, you will pay a fine of 50 points. Your final score in this round will be {{Constants.dl}}.</li>
+            <li>If you decide to NOT COMPLY and the Agency decides to NOT INSPECT, you will not pay any penalty and your final score in this round will be {{Constants.dr}}.</li>
+        </ul>
+        </p>
+
+
+{%else%}
+        <p>
+            If the Firm is not complying it will cost you 50 points due to environmental damage. To INSPECT, you will pay 40 points, as cost of inspection. If you decide to INSPECT and the Firm is NOT COMPLYING, you will collect a fine of 50 points from the Firm. If you do not inspect you can not collect any fines.
+        </p>
+
+ {%endif%}
+       <!-- <p>In each cell the number on the left indicates points for a Firm and the number on the right
+            indicates points for an Agency.</p>
+
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=2>Agency</th>
+        </tr>
+        <tr>
+            <th>INSPECT</th>
+            <th>NOT INSPECT</th>
+        </tr>
+        <tr>
+            <th rowspan=2><span class="rotate90">Firm</span></th>
+            <th>COMPLY</th>
+            <td>{{ Constants.ul}}, {{ Constants.lu}}</td>
+            <td>{{ Constants.ur}}, {{ Constants.ru }}</td>
+        </tr>
+        <tr>
+            <th>NOT COMPLY</th>
+            <td>{{ Constants.dl }},{{Constants.ld}}</td>
+            <td>{{ Constants.dr}}, {{ Constants.rd}}</td>
+        </tr>
+    </table>-->
+
+</div>
+</div>
+
+

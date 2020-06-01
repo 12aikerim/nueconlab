@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    End of game and Final Results
+{% endblock %}
+
+{% block content %}
+    <p>
+        Your total payoff is selected randomly from the results of {{Constants.num_rounds}} rounds. The results of the first 5 rounds are not included in random selection.
+        In previous rounds you earned:</p>
+        <ol>
+        {% for i in list_of_all_payments %}
+            <li>{{i|c}}{% if forloop.counter < 6 %}
+          *TRIAL ROUND* {%else%}{%endif%}</li>
+        {% endfor %}
+        </ol>
+
+    <p> As a result, in Game One computer randomly selected payoffs from rounds {{round_number}}</p>
+        <ul>{%for key,value in random_payments.items%}
+    <li> {{value|c}} in round {{key}} </li>
+        {%endfor%}
+        </ul>
+
+
+    <p> Your total payoff of this game is {{round_earning}}.
+    </p>
+
+    {% next_button %}
+
+
+{% endblock %}
