@@ -24,8 +24,11 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 35
     k = 3 #number of randomly selected rounds
-    index_list = sorted(random.sample(range(5,num_rounds), k))
-    print('indexes game1: ', index_list)
+    index_list = sorted(random.sample(range(5,num_rounds), k)) # exclude first 5 trial rounds
+    selected_rounds = [p + 1 for p in index_list]
+
+    print('selected rounds in game1: ', selected_rounds) #for the experimenters to see randomly selected rounds
+
 
     # constants with links to pages
     instructions_template = 'Game1/Instructions.html'
@@ -73,7 +76,6 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-
     def role(self):
         if self.id_in_group == 1:
             return 'inspector'
@@ -133,7 +135,7 @@ class Player(BasePlayer):
     pass
 
     def check_lump(self):
-        while len(self.participant.vars['lump'])!=1:
+        while len(self.participant.vars['lump'])!= 1:
             self.participant.vars['lump'].pop()
 
     pass
@@ -157,6 +159,7 @@ class Player(BasePlayer):
         self.participant.vars['lump']=[total]
         self.check_lump()
         print("accumulated payoff in game 1: ", self.participant.vars['lump'])
+
         return dict(
             list_of_all_payments=list_of_payments,
             round_earning=total,

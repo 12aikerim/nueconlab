@@ -32,8 +32,10 @@ class Constants(BaseConstants):
     intern = 10
     fine = 50
     environment = 50
-    index_list = sorted(random.sample(range(5,num_rounds), k))
-    print('indexes game3: ', index_list)
+    index_list = sorted(random.sample(range(5, num_rounds), k))  # exclude first 5 trial rounds
+    selected_rounds = [p + 1 for p in index_list]
+
+    print('selected rounds in game3: ', selected_rounds)  # for the experimenters to see randomly selected rounds
     # constants with links to pages
     instructions_template = 'Game3/Instructions.html'
 
