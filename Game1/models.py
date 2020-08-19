@@ -11,7 +11,6 @@ from otree.api import (
 
 import random
 
-from typing import List, Any
 
 author = 'vouch11'
 

@@ -6,7 +6,7 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=10, participation_fee=2800, doc="",
+    real_world_currency_per_point=0.05, participation_fee=5, doc="",
     use_browser_bots=0,
 )
 
@@ -33,7 +33,7 @@ SESSION_CONFIGS = [
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'KZT'
+REAL_WORLD_CURRENCY_CODE = 'SGD'
 USE_POINTS = True
 
 ROOMS = [
