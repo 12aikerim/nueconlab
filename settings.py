@@ -44,6 +44,7 @@ ROOMS = [
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
     dict(name='trial', display_name= 'Room for trial session ', participant_label_file='_rooms/trial_sg.txt')
+    dict(name='room1', display_name= 'Room #1 SG session', participant_label_file='_rooms/room1,txt')
 ]
 
 ADMIN_USERNAME = 'admin'
