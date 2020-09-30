@@ -39,14 +39,12 @@ USE_POINTS = True
 ROOMS = [
     dict(
         name='trial',
-        display_name='Room for trainings',
+        display_name='Room for trial session',
         participant_label_file='_rooms/trial.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
-    dict(name='trial', display_name= 'Room for trial session ', participant_label_file='_rooms/trial_sg.txt'),
     dict(name='one', display_name= 'Room #1 SG session', participant_label_file='_rooms/room1.txt'),
     dict(name='two', display_name= 'Room #2 SG session', participant_label_file='_rooms/room2.txt'),
-    dict(name='three', display_name= 'Room #3 SG session', participant_label_file='_rooms/room3.txt')
 ]
 
 ADMIN_USERNAME = 'admin'
