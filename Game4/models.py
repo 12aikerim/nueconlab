@@ -23,8 +23,10 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 35
     k = 3  # number of randomly selected rounds
-    index_list = sorted(rand.sample(range(5,num_rounds), k))
-    print('indexes game4: ', index_list)
+    index_list = sorted(rand.sample(range(5, num_rounds), k))  # exclude first 5 trial rounds
+    selected_rounds = [p + 1 for p in index_list]
+
+    print('selected rounds in game4: ', selected_rounds)  # for the experimenters to see randomly selected rounds
     Revenue = 60
     cost = 40
     on_paper = 10

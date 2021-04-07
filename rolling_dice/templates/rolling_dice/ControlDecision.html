@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Make your guess
+{% endblock %}
+
+{% block content %}
+<p>
+
+    Please enter your guess from 1 to 6 inclusive: </br>
+
+</p>
+{% formfields %}
+{% next_button %}
+
+{% endblock %}

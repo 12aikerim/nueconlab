@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Make your decision
+{% endblock %}
+
+{% block content %}
+     <p>
+         You have been assigned a Dictator's role.</br>
+         Now you have to make a decision to add or subtract from Receiver's earnings. </br>
+         <i>Reminder: your decision affects only Receiver's payment.</i>
+     </p>
+    {% formfields %}
+    {% next_button %}
+{% endblock %}
+
+

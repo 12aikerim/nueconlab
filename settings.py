@@ -6,7 +6,7 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=10, participation_fee=2800, doc="",
+    real_world_currency_per_point=0.05, participation_fee=10, doc="",
     use_browser_bots=0,
 )
 
@@ -33,19 +33,18 @@ SESSION_CONFIGS = [
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'KZT'
+REAL_WORLD_CURRENCY_CODE = 'SGD'
 USE_POINTS = True
 
 ROOMS = [
     dict(
         name='trial',
-        display_name='Room for trainings',
+        display_name='Room for trial session',
         participant_label_file='_rooms/trial.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
-    dict(name='session1', display_name= 'Room for session 1 ', participant_label_file='_rooms/session1.txt'),
-    dict(name='session2', display_name= 'Room for session 2 ', participant_label_file='_rooms/session2.txt'),
-    dict(name='MPP2021', display_name= 'Room for trial session (MPP2021)', participant_label_file='_rooms/MPP2021.txt')
+    dict(name='one', display_name= 'Room #1 SG session', participant_label_file='_rooms/room1.txt'),
+    dict(name='two', display_name= 'Room #2 SG session', participant_label_file='_rooms/room2.txt'),
 ]
 
 ADMIN_USERNAME = 'admin'

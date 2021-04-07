@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+    {% if player.role == 'control' %}
+    {% include 'rolling_dice/ControlDecision.html'%}
+    {% else %}
+    {% include 'rolling_dice/TreatmentDecision.html'%}
+    {% endif %}
+
+
+{% next_button %}
+
+{% endblock %}
