@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Final questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel panel-default" style="margin-bottom:10px">
+        <div class="panel-body">
+            <p><strong></strong></p>
+            <p>You have played four games in a total of 140 rounds. Your total earnings will be converted
+                to cash at a rate of 0.05 SGD per point and you will be paid this amount privately in cash.</p>
+            <p> Your total earnings for the experiment are {{experiment_payoff}}
+                plus {{participation_fee}} for participation.</p>
+        </div>
+        <p> Before finishing the game please complete the survey on the next page.</p>
+
+    </div>
+
+
+{% next_button %}
+{% endblock %}
+

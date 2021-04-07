@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Make your guess
+{% endblock %}
+
+{% block content %}
+<br>
+
+    The dice roll that computer generated is: <b>{{dice_roll}}</b> </br>
+    Please enter the number (from 1 to 6 inclusive) that you have guessed earlier. </br>
+
+</p>
+{% formfields %}
+{% next_button %}
+
+{% endblock %}

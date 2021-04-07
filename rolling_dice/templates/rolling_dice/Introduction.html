@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Welcome to the Dice Guessing Game.
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You have now responded to the first series of questions.</br>
+        The purpose now is to see how you guess in situations marked by randomness.</br>
+        You will play {{Constants.num_rounds}} rounds of a dice game in which you can win money in each round.</br>
+
+        You have to guess what the die will show. The more die rolls you guess correctly, the more money you
+        will win. You will receive guaranteed participation fee of {{Constants.participation_fee}}.
+
+
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   Results
+{% endblock %}
+
+{% block content %}
+<p>
+    Your decision was to {% if decision == 1 %} {{"add"}} {% else %} {{"subtract"}} {%endif%}
+    {{amount}} KZT.
+    Please, proceed to the Part 3 of the experiment by pressing Next button.
+</p>
+    {% next_button %}
+{{ form.errors }}
+{% endblock %}
+
+

@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Instructions
+{% endblock %}
+{% block content %}
+    <p>
+        {% if player.role == 'control' %}
+        Imagine a dice roll and guess a number of dots from {{Constants.min_allowed_guess}}
+        to {{Constants.max_allowed_guess}}.</br>
+        Report the number of dots which you have guessed and then click to the
+        next screen.</br>
+        Hereafter a die will roll and outcome will be shown. If your guess matched
+        the number of dots on the die then you will win {{Constants.win}}, else you will win {{Constants.lose}}.</br>
+
+        {% else %} {% comment "Treatment group screen" %} "Treatment group screen" {% endcomment %}
+        You have to guess a number of dots from {{Constants.min_allowed_guess}}
+        to {{Constants.max_allowed_guess}}. When you have made your guess you can press the Next button</br>
+        Hereafter a die will roll and you will be asked to report the number of dots which you have guessed earlier.</br>
+        If your guess matched the number of dots on the die then you will win {{Constants.win}}, else you will win {{Constants.lose}}.</br>
+
+        {%endif%}
+    </p>
+
+    <p>
+        You should avoid using the back button during the game as it might delete your total winnings.
+    </p>
+    {% next_button %}
+
+{% endblock %}
+

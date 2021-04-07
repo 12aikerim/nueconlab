@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Welcome to Dictator game.
+{% endblock %}
+
+{% block content %}
+<p> You have completed Part 1 of the experiment - the Dice Roll game. </br>
+    Now, we ask you to complete the Dictatorship game. You will play only {{Constants.num_rounds}} round.</br>
+    </br>
+    <b>Game Rules:</b>
+<ul>
+    <li>In this task you will be paired with another participant of the experiment <b>randomly</b>. </li>
+    <li>Each of you will receive endowment of {{Constants.endowment}} for this task.</li>
+    <li>Each of you will be randomly assigned to one of the two roles : 1) Dictator or 2) Receiver.</li>
+    <li>Depending on the role you will be assigned you will have to perform different tasks. </li>
+</ul>
+<b>Dictator's Role:</b>
+</br>
+If you have been assigned Dictator's role, you will have to decide to add or subtract money from Receiver's earnings. </br>
+Your decision will not affect your payment. That is, you will receive your initial endowment of {{Constants.endowment}}.</br>
+However, your decision <b>will affect</b> Receiver's payment in the following way:
+</br>
+<ol>
+    <li>If you decide to subtract from Receiver's earnings, the amount he will be paid in the end would be equal to {{Constants.endowment}} - [the amount you set].</li>
+    <li>If you decide to add to Receiver's earnings, the amount he will be paid in the end would be equal to {{Constants.endowment}} + [the amount you set].</li>
+</ol>
+
+<b>Receiver's Role:</b>
+</br>
+If you have been assigned to Receiver's role you will have to wait for Dictator's decision. You payoff would depend on Dictator's decision.</br>
+</br>
+If you have read and understood the rules of the game, proceed by clicking Next button.
+</p>
+    {% next_button %}
+
+{% endblock %}

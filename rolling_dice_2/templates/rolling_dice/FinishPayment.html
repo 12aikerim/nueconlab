@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+Game  over
+{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default" style="margin-bottom:10px">
+    <div class="panel-body">
+        <p><strong></strong></p>
+        <p>You have played the Part 1 of the game in a total of {{player.num_rounds}} rounds.</br>
+        Your total earnings for this part of the experiment are {{experiment_payoff}} plus {{participation_fee}} for participation.
+        </br>
+            Press Next button to proceed to Part 2 of the experiment.
+        </p>
+
+    </div>
+
+
+</div>
+
+
+{% next_button%}
+{% endblock %}
+
