@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block content %}
-    <p>The dice roll that computer generated was: <b>{{player.dice_roll}}</b> </p>
+
+    <p>The dice roll that computer generated was: <b>{{player.dice_roll}}</b> <img src = "{% static img_dice_path %}"/> </p>
     <p>Your guess was: <b>{{player.guess}}</b></p>
     <p>As the result you have won <b>{{player.payoff}}</b> for this round.</p>
     {% next_button %}

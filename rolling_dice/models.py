@@ -35,12 +35,14 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
+        self.group_randomly(fixed_id_in_group=True)
         import itertools
-        group_c = itertools.cycle(['treatment','control'])
+        group_c = itertools.cycle(['treatment', 'control'])
         if self.round_number == 1:
             for player in self.get_players():
                 player.participant.vars['group'] = next(group_c)
-    pass
+
+
 
 
 class Group(BaseGroup):

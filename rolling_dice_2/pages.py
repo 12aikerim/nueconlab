@@ -50,13 +50,14 @@ class Results(Page):
 
 class FinishPayment(Page):
     def is_displayed(self):
-        return self.round_number==Constants.num_rounds
+        return self.round_number ==  Constants.num_rounds
 
     def vars_for_template(self):
         participant = self.participant
         return dict(redemption_code=participant.label,
                     experiment_payoff = self.participant.payoff,
                     participation_fee = self.session.participation_fee,
+                    endowment = self.participant.vars['endowment'],
                     total_game_rounds = 40)
 
 page_sequence = [Introduction, Instructions, Decision,Results, FinishPayment]

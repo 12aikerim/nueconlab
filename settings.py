@@ -6,35 +6,52 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.05, participation_fee=10, doc="",
+    real_world_currency_per_point=1, participation_fee=2000, doc="",
     use_browser_bots=0,
 )
 
 
 SESSION_CONFIGS = [
 
+    #dict(
+      #  name='inspection_game',
+      #  display_name = '4 Games',
+      #  num_demo_participants = 2,
+       # app_sequence = ['Game1','Game2','Game3','Game4','payment_info1','survey'],
+   # ),
     dict(
-        name='inspection_game',
-        display_name = '4 Games',
+        name='rolling_dice_game',
+        display_name = 'Rolling Dice Game',
         num_demo_participants = 2,
-        app_sequence = ['Game1','Game2','Game3','Game4','payment_info1','survey'],
+        app_sequence = ['rolling_dice'],
+    ),
+    dict(
+        name='experiment_rolling_dice',
+        display_name = 'Experiment game',
+        num_demo_participants = 2,
+        app_sequence = ['rolling_dice','dictator']
     ),
     dict(
         name='survey',
         display_name ='Survey',
         num_demo_participants =1,
         app_sequence =['survey'],
+    ),
+    dict(
+        name='dictator',
+        display_name ='Dictatorship Game',
+        num_demo_participants =2,
+        app_sequence =['dictator'],
     )
-
-]
+    ]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'SGD'
-USE_POINTS = True
+REAL_WORLD_CURRENCY_CODE = 'KZT'
+USE_POINTS = False
 
 ROOMS = [
     dict(

@@ -7,17 +7,15 @@
 
 {% block content %}
 
-    <div class="panel panel-default" style="margin-bottom:10px">
-        <div class="panel-body">
-            <p><strong></strong></p>
-            <p>You have played four games in a total of 140 rounds. Your total earnings will be converted
-                to cash at a rate of 0.05 SGD per point and you will be paid this amount privately in cash.</p>
-            <p> Your total earnings for the experiment are {{experiment_payoff}}
-                plus {{participation_fee}} for participation.</p>
-        </div>
-        <p> Before finishing the game please complete the survey on the next page.</p>
-
+<div class="panel panel-default" style="margin-bottom:10px">
+    <div class="panel-body">
+        <p><strong></strong></p>
+        <p>You have played 2 games in a total of {{total_game_rounds}} rounds.</br>
+            Your total earnings for the experiment are {{experiment_payoff}} plus {{participation_fee}} for participation.</p>
     </div>
+
+
+</div>
 
 
 {% next_button %}

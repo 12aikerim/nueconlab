@@ -34,12 +34,6 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def creating_session(self):
-        import itertools
-        group_c = itertools.cycle(['treatment','control'])
-        if self.round_number == 1:
-            for player in self.get_players():
-                player.participant.vars['group'] = next(group_c)
     pass
 
 

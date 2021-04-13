@@ -4,7 +4,9 @@
 Instructions
 {% endblock %}
 {% block content %}
+
     <p>
+        This is the reminder regarding the rules of the game.
         {% if player.role == 'control' %}
         Imagine a dice roll and guess a number of dots from {{Constants.min_allowed_guess}}
         to {{Constants.max_allowed_guess}}.</br>

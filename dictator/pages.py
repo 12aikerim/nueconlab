@@ -9,6 +9,9 @@ class Instructions(Page):
 class Decision(Page):
     form_model = 'player'
     form_fields = ['add','amount']
+
+    def before_next_page(self):
+        self.player.set_payoff()
     pass
 
 class ResultsWaitPage(WaitPage):

@@ -31,13 +31,12 @@ class Decision(Page):
     form_fields = ['guess']
 
     def vars_for_template(self):
-        random_dice = random.randint(Constants.min_allowed_guess,Constants.max_allowed_guess)
+        random_dice = random.randint(Constants.min_allowed_guess, Constants.max_allowed_guess)
         self.player.dice_roll = random_dice
         print("self.player.dice_roll = {}".format(random_dice))
         return dict(dice_roll=random_dice)
 
     def before_next_page(self):
-
         self.player.set_payoff()
 
     pass
@@ -46,6 +45,11 @@ class MyWaitPage(WaitPage):
     pass
 
 class Results(Page):
+    #dynamic images of results
+    def vars_for_template(self):
+        return dict(
+            img_dice_path='_static/rolling_dice/{}.png'.format(self.player.dice_roll)
+        )
     pass
 
 class FinishPayment(Page):
@@ -59,4 +63,5 @@ class FinishPayment(Page):
                     participation_fee = self.session.participation_fee,
                     total_game_rounds = 40)
 
-page_sequence = [Introduction, Instructions, Decision,Results, FinishPayment]
+
+page_sequence = [Introduction, Instructions, Decision, Results, FinishPayment]
