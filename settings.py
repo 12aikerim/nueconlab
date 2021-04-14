@@ -38,6 +38,12 @@ SESSION_CONFIGS = [
         app_sequence =['survey1_PSM'],
     ),
     dict(
+        name='survey_cbrc',
+        display_name ='Survey Corruption Bureaucracy',
+        num_demo_participants =1,
+        app_sequence =['survey2_CBRC'],
+    ),
+    dict(
         name='dictator',
         display_name ='Dictatorship Game',
         num_demo_participants =2,
