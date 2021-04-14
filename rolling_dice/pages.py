@@ -46,11 +46,13 @@ class MyWaitPage(WaitPage):
 
 class Results(Page):
     #dynamic images of results
+
     def vars_for_template(self):
         return dict(
-            img_dice_path='_static/rolling_dice_2/{}.png'.format(self.player.dice_roll)
+            img_dice_path='rolling_dice/{}.png'.format(self.player.dice_roll)
         )
     pass
+
 
 class FinishPayment(Page):
     def is_displayed(self):
