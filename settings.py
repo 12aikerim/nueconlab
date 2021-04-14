@@ -13,12 +13,12 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
 
-    dict(
-       name='inspection_game',
-       display_name = '4 Games',
-       num_demo_participants = 2,
-        app_sequence = ['Game1','Game2','Game3','Game4','payment_info1','survey'],
-   ),
+    #dict(
+      # name='inspection_game',
+      # display_name = '4 Games',
+      # num_demo_participants = 2,
+       # app_sequence = ['Game1','Game2','Game3','Game4','payment_info1','survey'],
+   #),
     dict(
         name='rolling_dice_game',
         display_name = 'Rolling Dice Game',
@@ -42,6 +42,18 @@ SESSION_CONFIGS = [
         display_name ='Survey Corruption Bureaucracy',
         num_demo_participants =1,
         app_sequence =['survey2_CBRC'],
+    ),
+    dict(
+        name='survey_demographics',
+        display_name ='Survey Demographics',
+        num_demo_participants =1,
+        app_sequence =['survey3_Demographics'],
+    ),
+    dict(
+        name='survey_job',
+        display_name ='Survey Job attributes and Career Preferences',
+        num_demo_participants =1,
+        app_sequence =['survey4_Job'],
     ),
     dict(
         name='dictator',

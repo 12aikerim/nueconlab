@@ -43,7 +43,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     children = models.IntegerField(label='4) How many children do you have?', min=0, max=10)
-    hometown = models.IntegerField(label='5) What is your hometown?'),
+    hometown = models.IntegerField(label='5) What is your hometown?')
     school_status = models.StringField(
         choices=[['FS', 'Full-time student'], ['PS', 'Part-time student'],
                  ['NA', 'Not a student']],
