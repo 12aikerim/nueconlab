@@ -6,9 +6,16 @@
 {% endblock %}
 
 {% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
     <p>The dice roll that computer generated was: <b>{{player.dice_roll}}</b> </p>
     <p>Your guess was: <b>{{player.guess}}</b></p>
     <p>As the result you have won <b>{{player.payoff}}</b> for this round.</p>
+    </div>
+</div>
     {% next_button %}
 {% endblock %}
 

@@ -2,11 +2,15 @@
 {% load otree static %}
 
 {% block title %}
-    Welcome to the Dice Guessing Game.
+    Welcome to the Part 2 of Dice Guessing Game.
 {% endblock %}
 
 {% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
 
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
     <p>
         You have now responded to the  series of questions.</br>
         You will play {{Constants.num_rounds}} rounds of the dice game that you have played previously in Part 1 </br>
@@ -16,7 +20,8 @@
 
 
     </p>
-
+    </div>
+</div>
     {% next_button %}
 
 {% endblock %}

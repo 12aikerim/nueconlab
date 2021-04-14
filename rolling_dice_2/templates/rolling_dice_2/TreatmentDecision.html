@@ -6,6 +6,11 @@ Make your guess
 {% endblock %}
 
 {% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
 <br>
 
     The dice roll that computer generated is: <b>{{dice_roll}}</b> </br>
@@ -13,6 +18,8 @@ Make your guess
 
 </p>
 {% formfields %}
+    </div>
+</div>
 {% next_button %}
 
 {% endblock %}

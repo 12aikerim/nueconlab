@@ -7,9 +7,11 @@ Game  over
 
 {% block content %}
 
-<div class="panel panel-default" style="margin-bottom:10px">
-    <div class="panel-body">
-        <p><strong></strong></p>
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
         <p>You have played the Part 3 of the experiment games in a total of {{Constants.num_rounds}} rounds.</br>
         Your total accumulated earnings up until this part of the experiment are {{experiment_payoff}} for Dice guessing tasks,
             {{endowment}} from Dictatorship game plus {{participation_fee}} for participation.

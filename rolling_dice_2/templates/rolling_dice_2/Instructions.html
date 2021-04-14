@@ -4,7 +4,11 @@
 Instructions
 {% endblock %}
 {% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
 
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
     <p>
         This is the reminder regarding the rules of the game.
         {% if player.role == 'control' %}
@@ -23,10 +27,11 @@ Instructions
 
         {%endif%}
     </p>
-
-    <p>
+    </div>
+</div>
+    <em>
         You should avoid using the back button during the game as it might delete your total winnings.
-    </p>
+    </em>
     {% next_button %}
 
 {% endblock %}

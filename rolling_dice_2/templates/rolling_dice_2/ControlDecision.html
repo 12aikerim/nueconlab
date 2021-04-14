@@ -6,12 +6,19 @@ Make your guess
 {% endblock %}
 
 {% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
 <p>
 
     Please enter your guess from 1 to 6 inclusive: </br>
 
 </p>
 {% formfields %}
+    </div>
+</div>
 {% next_button %}
 
 {% endblock %}
