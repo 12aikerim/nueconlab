@@ -4,6 +4,12 @@
 Instructions
 {% endblock %}
 {% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
     <p>
         {% if player.role == 'control' %}
         Imagine a dice roll and guess a number of dots from {{Constants.min_allowed_guess}}
@@ -25,6 +31,8 @@ Instructions
     <p>
         You should avoid using the back button during the game as it might delete your total winnings.
     </p>
+    </div>
+</div>
     {% next_button %}
 
 {% endblock %}

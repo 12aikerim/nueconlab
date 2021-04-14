@@ -6,8 +6,13 @@
 {% endblock %}
 
 {% block content %}
-    <img src='{% static "rolling_dice/twodice.jpeg" %}'/>
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
     <p>
+        </br>
         You have now responded to the first series of questions.</br>
         The purpose now is to see how you guess in situations marked by randomness.</br>
         You will play {{Constants.num_rounds}} rounds of a dice game in which you can win money in each round.</br>
@@ -17,7 +22,8 @@
 
 
     </p>
-
+    </div>
+</div>
     {% next_button %}
 
 {% endblock %}
