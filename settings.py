@@ -13,12 +13,12 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
 
-    #dict(
-      #  name='inspection_game',
-      #  display_name = '4 Games',
-      #  num_demo_participants = 2,
-       # app_sequence = ['Game1','Game2','Game3','Game4','payment_info1','survey'],
-   # ),
+    dict(
+       name='inspection_game',
+       display_name = '4 Games',
+       num_demo_participants = 2,
+        app_sequence = ['Game1','Game2','Game3','Game4','payment_info1','survey'],
+   ),
     dict(
         name='rolling_dice_game',
         display_name = 'Rolling Dice Game',
@@ -29,20 +29,20 @@ SESSION_CONFIGS = [
         name='experiment_rolling_dice',
         display_name = 'Experiment game',
         num_demo_participants = 2,
-        app_sequence = ['rolling_dice','dictator']
+        app_sequence = ['rolling_dice','dictator','rolling_dice_2']
     ),
     dict(
-        name='survey',
-        display_name ='Survey',
+        name='survey_psm',
+        display_name ='Survey PSM',
         num_demo_participants =1,
-        app_sequence =['survey'],
+        app_sequence =['survey1_PSM'],
     ),
     dict(
         name='dictator',
         display_name ='Dictatorship Game',
         num_demo_participants =2,
         app_sequence =['dictator'],
-    )
+    ),
     ]
 
 # ISO-639 code

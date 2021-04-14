@@ -19,11 +19,11 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'rolling_dice'
+    name_in_url = 'rolling_dice_2'
     players_per_group = None
     num_rounds = 2
 
-    instructions_template = 'rolling_dice/Instructions.html'
+    instructions_template = 'rolling_dice_2/Instructions.html'
 
     max_allowed_guess = 6
     min_allowed_guess = 1
