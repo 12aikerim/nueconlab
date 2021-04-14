@@ -23,7 +23,11 @@ class ControlDecision(Page):
 class TreatmentDecision(Page):
     form_model = 'player'
     form_fields = ['guess']
-
+    def vars_for_template(self):
+        return dict(
+            img_dice_path='rolling_dice/{}.png'.format(self.player.dice_roll)
+        )
+    pass
 
 
 class Decision(Page):
