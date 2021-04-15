@@ -98,58 +98,58 @@ class Player(BasePlayer):
                 ['4', 'I would prefer to work in the quasi-governmental sector'],
                 ['5', 'I would prefer to have my own business'],
                 ['6', 'Do not plan to work']],
-        label='1) Which of the following statements best describes your career preferences?',
+        label='Which of the following statements best describes your career preferences?',
         widget=widgets.RadioSelect,
     )
     motivation = models.StringField(
         choices=[['1', 'Better salary'], ['2', 'Job security and staff retention'],
                  ['3', 'Better service to community'], ['4', 'Political connections'], ['5', 'Other']],
-        label='2) What is the primary reason and motivation in your previous section?',
+        label='What is the primary reason and motivation in your previous section?',
         widget=widgets.RadioSelect,
     )
     fedgov_job = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='3) A job in the federal government',
+        label='A job in the federal government',
         widget=widgets.RadioSelect,
     )
     state_job = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='4) A job in the state or local government',
+        label='A job in the state or local government',
         widget=widgets.RadioSelect,
     )
     private_job = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='5) A job in a private-sector corporation',
+        label='A job in a private-sector corporation',
         widget=widgets.RadioSelect,
     )
     SME = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='6) A job in a small or medium-sized private sector business',
+        label='A job in a small or medium-sized private sector business',
         widget=widgets.RadioSelect,
     )
     owner = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='7) A job as an owner of a private business',
+        label='A job as an owner of a private business',
         widget=widgets.RadioSelect,
     )
     banking = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='8) A job in the banking of finance sectors',
+        label='A job in the banking of finance sectors',
         widget=widgets.RadioSelect,
     )
     consulting = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='9) A job in a consulting',
+        label='A job in a consulting',
         widget=widgets.RadioSelect,
     )
     NPS = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='10) A job in an organization in the non-profit sector',
+        label='A job in an organization in the non-profit sector',
         widget=widgets.RadioSelect,
     )
     budget_sector = models.StringField(
         choices=[['1', 'Very likely'], ['2', 'Likely'], ['3', 'Neutral'], ['4', 'Not Likely'], ['5', 'Very Unlikely']],
-        label='11) A job in the government budget sector (e.g., public health, science, education, culture)',
+        label='A job in the government budget sector (e.g., public health, science, education, culture)',
         widget=widgets.RadioSelect,
     )
 

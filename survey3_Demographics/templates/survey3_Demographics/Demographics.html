@@ -15,9 +15,81 @@
             Please answer the following quesitons.
         </p>
 
-    {% formfields %}
+   <ol>
+      <li> {% formfield player.age %} </li>
+       <li>{% formfield player.female %}</li>
+       <li>{% formfield player.marital_status %}</li>
+       <li>{% formfield player.children %}</li>
+       <li>{% formfield player.hometown%}</li>
+       <li>{% formfield player.school_status%}</li>
+
+       <div id="student">
+               <li>{% formfield player.academic%}</li>
+           <div id="study_field">
+              <li>{% formfield player.field_study%}</li>
+           </div>
+           <div id="gpa">
+               <li>{% formfield player.GPA%}</li>
+           </div>
+       </div>
+
+       <li>{% formfield player.mother_education %}</li>
+       <li>{% formfield player.father_education %}</li>
+       <li>{% formfield player.employment_status %}</li>
+       <li>{% formfield player.income_level %}</li>
+       <li>{% formfield player.mother_employment %}</li>
+       <li>{% formfield player.father_employment %}</li>
+
+
+   </ol>
+
     </div>
 </div>
     {% next_button %}
 
+<script>
+    $(document).ready(function () {
+        var $isStudent = $('#student')
+        $isStudent.hide()
+        $('input').change(function () {
+                var noDegree = $('input[name = school_status]:checked').val();
+
+                if (noDegree === 'NA') {
+                    $isStudent.hide();
+                } else {
+                    $isStudent.show();
+                }
+            }
+        );
+
+        var $gpaDiv = $('#gpa')
+        $gpaDiv.hide()
+        $('input').change(function () {
+                var noDegree = $('input[name = school_status]:checked').val();
+
+                if (noDegree === 'NA') {
+                    $gpaDiv.hide();
+                } else {
+                    $gpaDiv.show();
+                }
+            }
+        );
+        var $fieldStudyDiv = $('#study_field');
+        $fieldStudyDiv.hide();
+        $('input').change(function () {
+                var noDegree = $('input[name = academic]:checked').val();
+
+                if (noDegree === 'ND') {
+                    $fieldStudyDiv.hide();
+                } else {
+                    $fieldStudyDiv.show();
+                }
+            }
+        );
+
+    });
+
+
+</script>
 {% endblock %}
+

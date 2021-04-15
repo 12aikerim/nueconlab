@@ -15,10 +15,39 @@
             Imagine you are free to choose any job. How likely you be to choose each of the following
             (starting from the third question)?
         </p>
+        <ol>
+            <li>{% formfield player.career_preference_variable%}</li>
+            <div id = "show_motivation">
+                <li>{% formfield player.motivation %}</li>
+            </div>
+            <li>{% formfield player.fedgov_job %}</li>
+            <li>{% formfield player.state_job %}</li>
+            <li>{% formfield player.private_job %}</li>
+            <li>{% formfield player.SME %}</li>
+            <li>{% formfield player.owner %}</li>
+            <li>{% formfield player.banking %}</li>
+            <li>{% formfield player.consulting %}</li>
+            <li>{% formfield player.NPS %}</li>
+            <li>{% formfield player.budget_sector %}</li>
+        </ol>
 
-    {% formfields %}
     </div>
 </div>
     {% next_button %}
+<script>
+    $(document).ready(function () {
+        var $motivationDiv = $('#show_motivation')
+        $motivationDiv.hide()
+        $('input').change(function () {
+                var noDegree = $('input[name = career_preference_variable]:checked').val();
 
+                if (noDegree === '6') {
+                    $motivationDiv.hide();
+                } else {
+                    $motivationDiv.show();
+                }
+            }
+        );
+    });
+</script>
 {% endblock %}

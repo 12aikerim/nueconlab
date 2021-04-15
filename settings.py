@@ -29,7 +29,7 @@ SESSION_CONFIGS = [
         name='experiment_rolling_dice',
         display_name = 'Experiment game',
         num_demo_participants = 2,
-        app_sequence = ['rolling_dice','dictator','rolling_dice_2']
+        app_sequence = ['survey1_PSM','rolling_dice','survey2_CBRC','dictator','survey3_Demographics','rolling_dice_2','survey4_Job']
     ),
     dict(
         name='survey_psm',
