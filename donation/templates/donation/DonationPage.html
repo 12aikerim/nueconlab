@@ -13,15 +13,8 @@
               href="{% static 'global/matrix.css' %}"/>
         <p>
             For this game, we are interested in how university students make decisions about charitable donations.
-            You will be given {{Constants.endowment}} with which to play. You may keep all of this money or you may make
-            a donation to one of the following five organizations in Kazakhstan:
-            <ul>
-        <li>DARA Charity Foundation,</li>
-        <li>Saby Charitable Foundation,</li>
-        <li>Public Fund “ANA UYI”,</li>
-        <li>Charitable Foundation “Niyet”</li>
-        <li>Aruzhan Sain Public Foundation “Voluntary Society Mercy”.</li>
-    </ul>
+            You will be given {{Constants.endowment}} with which to play.
+        {% formfield player.charity_group %}
         </br>
         You can donate any amount up to {{Constants.endowment}}, including zero. We emphasize that whatever money you donate will
         actually be given to your chosen organization.
@@ -29,7 +22,7 @@
         Any money you do not donate will become part of your earnings for this game.
         For example, if you donate {{Constants.sample_donation}}, your will receive {{Constants.endowment|c}} – {{Constants.sample_donation|c }} = {{Constants.sample_earning}} in earnings for this game.
         </p>
-    {% formfields %}
+    {% formfield player.donation %}
     </div>
 </div>
     {% next_button %}

@@ -17,9 +17,10 @@ Examples are given for the lab and Amazon Mechanical Turk (AMT).
 
 
 class Constants(BaseConstants):
-    name_in_url = 'payment_info'
+    name_in_url = 'payment_info_dice'
     players_per_group = None
     num_rounds = 1
+    game_rounds = 2
 
 
 class Subsession(BaseSubsession):

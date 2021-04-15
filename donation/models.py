@@ -34,6 +34,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+
+    charity_group = models.StringField(
+        choices = [['DARA Charity Foundation','DARA Charity Foundation'],['Saby Charitable Foundation','Saby Charitable Foundation'],
+                   ['Public Fund “ANA UYI”','Public Fund “ANA UYI”'],['Charitable Foundation “Niyet”','Charitable Foundation “Niyet”'],
+                   ['Aruzhan Sain Public Foundation “Voluntary Society Mercy”','Aruzhan Sain Public Foundation “Voluntary Society Mercy”']],
+        widget=widgets.RadioSelect,
+        label = 'You may keep all of this money or you may make a donation to one of the following five organizations in Kazakhstan'
+    )
     donation = models.IntegerField(
         min=0,
         max=Constants.endowment,

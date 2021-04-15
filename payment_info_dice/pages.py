@@ -10,7 +10,7 @@ class PaymentInfo(Page):
                     experiment_payoff = self.participant.payoff,
                     converted_pay = self.player.convert(),
                     participation_fee = self.session.participation_fee,
-                    total_game_rounds = self.player.num_rounds*2)
+                    total_game_rounds = Constants.game_rounds*2)
 
 
 page_sequence = [PaymentInfo]

@@ -38,7 +38,8 @@ class Decision(Page):
         random_dice = random.randint(Constants.min_allowed_guess, Constants.max_allowed_guess)
         self.player.dice_roll = random_dice
         print("self.player.dice_roll = {}".format(random_dice))
-        return dict(dice_roll=random_dice)
+        return dict(dice_roll=random_dice,
+                    img_dice_path='rolling_dice/{}.png'.format(self.player.dice_roll))
 
     def before_next_page(self):
         self.player.set_payoff()

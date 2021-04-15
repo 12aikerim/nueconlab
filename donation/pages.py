@@ -5,7 +5,7 @@ from .models import Constants
 
 class DonationPage(Page):
     form_model = 'player'
-    form_fields = ['donation']
+    form_fields = ['charity_group','donation']
     def before_next_page(self):
         self.player.set_payoff()
 

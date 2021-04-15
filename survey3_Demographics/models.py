@@ -50,14 +50,14 @@ class Player(BasePlayer):
         label='Are you currently studying?',
         widget=widgets.RadioSelect,
     )
-    academic = models.StringField(
+    academic = models.StringField(blank=True,
         choices=[['BSc', "Bachelor’s degree"], ['MSC', "Master’s degree"],
                  ['PhD', 'Doctorate degree'], ['ND', 'Non-degree']],
         label='What is your current program level?',
         widget=widgets.RadioSelect,
     )
-    field_study = models.StringField(label='What is your field of study?')
-    GPA = models.StringField(
+    field_study = models.StringField(blank=True,label='What is your field of study?')
+    GPA = models.StringField(blank=True,
         choices=[['1', '4.00-3.50'], ['2', '3.50-3.00'], ['3', '3.00-2.50'], ['4', '2.50-2.00'], ['5', '2.00-1.50'],
                  ['6', '1.50-1.00'], ['7', 'less than 1.00']],
         label='What is your current GPA?',

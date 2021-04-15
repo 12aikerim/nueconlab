@@ -101,7 +101,7 @@ class Player(BasePlayer):
         label='Which of the following statements best describes your career preferences?',
         widget=widgets.RadioSelect,
     )
-    motivation = models.StringField(
+    motivation = models.StringField(blank=True,
         choices=[['1', 'Better salary'], ['2', 'Job security and staff retention'],
                  ['3', 'Better service to community'], ['4', 'Political connections'], ['5', 'Other']],
         label='What is the primary reason and motivation in your previous section?',
