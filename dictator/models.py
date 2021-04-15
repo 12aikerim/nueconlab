@@ -48,7 +48,9 @@ class Player(BasePlayer):
         label='How much you want to add (or subtract)? ',
         doc='Amount to be added/subtracted'
     )
-    pass
+    def set_payoff(self):
+        self.payoff = Constants.endowment - self.amount
+
 
 
 

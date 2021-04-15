@@ -5,6 +5,8 @@ from .models import Constants
 class PSM1(Page):
     form_model = 'player'
     form_fields = ['APP1', 'CPI1', 'CPV1', 'COM1', 'SS1', 'APP7']
+    def vars_for_template(self):
+        return dict(consent = self.player.consent)
 
 class PSM2(Page):
     form_model = 'player'
@@ -26,7 +28,9 @@ class PSM6(Page):
     form_model = 'player'
     form_fields = ['APP6', 'CPV7', 'CPV8', 'COM6', 'SS6']
 
-class Results(Page):
-    pass
+class Greetings(Page):
+    form_model = 'player'
+    form_fields = ['consent']
 
-page_sequence = [PSM1, PSM2, PSM3, PSM4, PSM5, PSM6]
+
+page_sequence = [Greetings,PSM1, PSM2, PSM3, PSM4, PSM5, PSM6]

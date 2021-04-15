@@ -6,6 +6,20 @@
 {% endblock %}
 
 {% block content  %}
+{% if consent != True %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'global/matrix.css' %}"/>
+
+        <p>
+            You clicked "I Disagree" button on Consent Form. We respect your decision to not to continue the experiment, please close the browser tab.</br>
+            Good bye!
+        </p>
+    </div>
+</div>
+{% else %}
 <div class="card bg-light instructions">
     <div class="card-body">
 
@@ -19,7 +33,7 @@
     {% formfields %}
     </div>
 </div>
-
-    {% next_button %}
+        {% next_button %}
+        {% endif%}
 
 {% endblock %}

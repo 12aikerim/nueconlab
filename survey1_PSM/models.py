@@ -29,6 +29,8 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
+
+    consent = models.BooleanField()
     APP1 = models.StringField(
         choices=[['SA', 'Strongly agree'], ['A', 'Agree'],
                  ['U', 'Undecided (or if you do not understand the statement)'], ['D', 'Disagree'],

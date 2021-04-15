@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+<p>
+    Your decision was to donate
+    {{amount_donated}}. As the result you earned {{amount_earned}}.
+    Please, proceed to the final Payment info page of the experiment by pressing Next button.
+</p>
+{% next_button %}
+{{ form.errors }}
+{% endblock %}
+
+

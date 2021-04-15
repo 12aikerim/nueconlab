@@ -43,13 +43,11 @@ class Decision(Page):
         return dict(dice_roll=random_dice)
 
     def before_next_page(self):
-
         self.player.set_payoff()
 
     pass
 
-class MyWaitPage(WaitPage):
-    pass
+
 
 class Results(Page):
     pass
