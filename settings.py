@@ -86,8 +86,8 @@ USE_POINTS = True
 
 ROOMS = [
     dict(
-        name='trial_mpp663',
-        display_name='Room for trial session (MPP663)',
+        name='trial_mpp',
+        display_name='Room for trial session (MPP663&MPP602)',
         participant_label_file='_rooms/MPP663_and_MPP602.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
