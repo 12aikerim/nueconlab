@@ -134,7 +134,7 @@ class Player(BasePlayer):
         choices=[['SA', 'Strongly agree'], ['A', 'Agree'],
                  ['U', 'Undecided (or if you do not understand the statement)'], ['D', 'Disagree'],
                  ['SD', 'Strongly disagree']],
-        label='3) It is not fundemental that public services respond to the needs of citizens',
+        label='3) It is not fundamental that public services respond to the needs of citizens',
         widget=widgets.RadioSelect,
     )
     COM3 = models.StringField(

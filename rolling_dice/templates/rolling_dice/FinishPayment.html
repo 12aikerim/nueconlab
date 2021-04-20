@@ -2,7 +2,7 @@
 {% load otree %}
 
 {% block title %}
-Game  over
+End of Game 1
 {% endblock %}
 
 {% block content %}
@@ -12,10 +12,10 @@ Game  over
 
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
-        <p>You have played the Part 1 of the game in a total of {{Constants.num_rounds}} rounds.</br>
-        Your total earnings for this part of the experiment are {{experiment_payoff}} plus {{participation_fee}} for participation.
+        <p>You have completed Game 1 in a total of {{Constants.num_rounds}} rounds.</br>
+        Your total earnings so far are {{converted_payment}} from {{experiment_payoff}}  plus {{participation_fee}} for participation.
         </br>
-            Press Next button to proceed to Part 2 of the experiment.
+            Press Next button to proceed to Part 2.
         </p>
 
     </div>

@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Donation Game
+    Game 4: Donation Game
 {% endblock %}
 
 {% block content %}
@@ -12,19 +12,35 @@
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
         <p>
-            For this game, we are interested in how university students make decisions about charitable donations.
-            You will be given {{Constants.endowment}} with which to play.
+            For this game, you will be given {{Constants.endowment}} with which to play.
         {% formfield player.charity_group %}
         </br>
-        You can donate any amount up to {{Constants.endowment}}, including zero. We emphasize that whatever money you donate will
-        actually be given to your chosen organization.
+        You can donate any points between zero and {{Constants.endowment}}. We emphasize that whatever points you donate the actual tenge amount will
+         be given to your chosen organization.
         </br></br>
         Any money you do not donate will become part of your earnings for this game.
         For example, if you donate {{Constants.sample_donation}}, your will receive {{Constants.endowment|c}} – {{Constants.sample_donation|c }} = {{Constants.sample_earning}} in earnings for this game.
         </p>
-    {% formfield player.donation %}
+        <div id = donation>
+            {% formfield player.donation %}</div>
     </div>
 </div>
     {% next_button %}
 
+<script>
+    $(document).ready(function () {
+        var $donationDiv = $('#donation')
+        $donationDiv.show()
+        $('input').change(function () {
+                var noDegree = $('input[name = charity_group]:checked').val();
+
+                if (noDegree === 'None') {
+                    $donationDiv.hide();
+                } else {
+                    $donationDiv.show();
+                }
+            }
+        );
+    });
+</script>
 {% endblock %}

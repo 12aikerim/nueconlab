@@ -6,7 +6,7 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1, participation_fee=2000, doc="",
+    real_world_currency_per_point=20, participation_fee=2000, doc="",
     use_browser_bots=0,
 )
 
@@ -19,6 +19,12 @@ SESSION_CONFIGS = [
       # num_demo_participants = 2,
        # app_sequence = ['Game1','Game2','Game3','Game4','payment_info1','survey'],
    #),
+    dict(
+        name='experiment_rolling_dice',
+        display_name = 'Experiment game',
+        num_demo_participants = 2,
+        app_sequence = ['survey1_PSM','rolling_dice','survey2_CBRC','dictator','survey3_Demographics','rolling_dice_2','survey4_Job','donation','payment_info_dice']
+    ),
     dict(
         name='payment_info_dice',
         display_name = 'Payment info Dice',
@@ -37,12 +43,7 @@ SESSION_CONFIGS = [
         num_demo_participants = 2,
         app_sequence = ['rolling_dice'],
     ),
-    dict(
-        name='experiment_rolling_dice',
-        display_name = 'Experiment game',
-        num_demo_participants = 2,
-        app_sequence = ['survey1_PSM','rolling_dice','survey2_CBRC','dictator','survey3_Demographics','rolling_dice_2','survey4_Job','donation','payment_info_dice']
-    ),
+
     dict(
         name='survey_psm',
         display_name ='Survey PSM',
@@ -81,13 +82,13 @@ LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'KZT'
-USE_POINTS = False
+USE_POINTS = True
 
 ROOMS = [
     dict(
         name='trial_mpp663',
         display_name='Room for trial session (MPP663)',
-        participant_label_file='_rooms/MPP663.txt',
+        participant_label_file='_rooms/MPP663_and_MPP602.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
     #dict(name='one', display_name= 'Room #1 SG session', participant_label_file='_rooms/room1.txt'),

@@ -20,7 +20,7 @@ class Constants(BaseConstants):
     name_in_url = 'payment_info_dice'
     players_per_group = None
     num_rounds = 1
-    game_rounds = 2
+    game_rounds = 5
 
 
 class Subsession(BaseSubsession):

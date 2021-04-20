@@ -12,8 +12,10 @@
 
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
-        <p>The dice roll that computer generated was: <b>{{player.dice_roll}}</b><p>  </p><img src = "{% static img_dice_path %} "/></br>
-     Your guess was: <b>{{player.guess}}</b></p>
+
+        <p>Your guess was: <b>{{player.guess}}</b></br>
+        The dice roll that computer generated was: <b>{{player.dice_roll}}</b><p>  </p><img src = "{% static img_dice_path %} "/></br></p>
+
     <p>As the result you have won <b>{{player.payoff}}</b> for this round.</p>
     </div>
 </div>

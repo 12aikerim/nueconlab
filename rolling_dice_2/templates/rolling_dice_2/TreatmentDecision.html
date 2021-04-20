@@ -2,22 +2,22 @@
 {% load otree static %}
 
 {% block title %}
-Make your guess
+Report your guess
 {% endblock %}
 
 {% block content %}
 <div class="card bg-light instructions">
     <div class="card-body">
 
+
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
-<br>
+        <p>
+            Please enter the number (from 1 to 6 inclusive) that you have guessed earlier. </br>
+            {% formfields %}
+        </p>
 
-    The dice roll that computer generated is: <b>{{dice_roll}}</b>  <p>  </p> <img src = "{% static img_dice_path %} "/></br>
-    Please enter the number (from 1 to 6 inclusive) that you have guessed earlier. </br>
-
-</p>
-{% formfields %}
+        <p> The dice roll that computer generated is: <b>{{dice_roll}}</b><p>  </p><img src = "{% static img_dice_path %} "/></p>
     </div>
 </div>
 {% next_button %}

@@ -8,7 +8,7 @@ class Instructions(Page):
 
 class Decision(Page):
     form_model = 'player'
-    form_fields = ['add','amount']
+    form_fields = ['amount']
     def before_next_page(self):
         self.player.set_payoff()
 
@@ -16,10 +16,8 @@ class Decision(Page):
 class Results(Page):
     def vars_for_template(self):
         return{
-            'decision':self.player.add,
-            'amount':self.player.amount
-        }
+            'amount':self.player.amount}
     pass
 
 
-page_sequence = [Instructions, Decision, Results]
+page_sequence = [Instructions, Decision]

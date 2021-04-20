@@ -20,14 +20,14 @@ class Constants(BaseConstants):
     name_in_url = 'dictator'
     players_per_group = None
     num_rounds = 1
-    endowment = c(3000)
+    endowment = c(100)
 
 
 class Subsession(BaseSubsession):
     def creating_session(self):
         if self.round_number == 1:
             for player in self.get_players():
-                player.participant.vars['endowment'] = c(3000)
+                player.participant.vars['endowment'] = c(100)
     pass
 
 
@@ -37,19 +37,14 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    add = models.IntegerField(
-        choices=[[1, "Add to Receiver's earnings"], [0, "Subtract from Receiver's endowment"]],
-        label='Choose the action you want to do',
-        widget=widgets.RadioSelect,
-    )
     amount = models.IntegerField(
         min=0,
         max=Constants.endowment,
-        label='How much you want to add (or subtract)? ',
+        label='How much you want to send?',
         doc='Amount to be added/subtracted'
     )
     def set_payoff(self):
-        self.payoff = Constants.endowment
+        self.payoff = Constants.endowment - self.amount
 
 
 

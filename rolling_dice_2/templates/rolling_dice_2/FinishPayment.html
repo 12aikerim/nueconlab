@@ -2,20 +2,20 @@
 {% load otree %}
 
 {% block title %}
-Game  over
+End of Game 3
 {% endblock %}
 
 {% block content %}
-
 <div class="card bg-light instructions">
     <div class="card-body">
 
+
         <link rel="stylesheet" type="text/css"
               href="{% static 'global/matrix.css' %}"/>
-        <p>You have played the Part 3 of the experiment games in a total of {{Constants.num_rounds}} rounds. In this game you earned {{player.payoff}}</br>
-        Your total accumulated earnings up until this part of the experiment are {{experiment_payoff}} for all Dice guessing tasks, Dicatorship game and plus {{participation_fee}} for participation.
-        </br>
-            Press Next button to proceed to the next survey section of the experiment.
+        <p>You have completed Game 3 in a total of {{Constants.num_rounds}} rounds.</br>
+            Your total earnings so far are {{converted_payment}} from {{experiment_payoff}}  plus {{participation_fee}} for participation.
+            </br>
+            Press Next button to proceed.
         </p>
 
     </div>

@@ -68,6 +68,7 @@ class FinishPayment(Page):
         return dict(redemption_code=participant.label,
                     experiment_payoff = self.participant.payoff,
                     participation_fee = self.session.participation_fee,
+                    converted_payment = self.player.convert(),
                     total_game_rounds = 40)
 
 

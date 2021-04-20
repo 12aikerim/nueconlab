@@ -21,8 +21,8 @@ class Constants(BaseConstants):
     name_in_url = 'donation'
     players_per_group = None
     num_rounds = 1
-    endowment = c(1000)
-    sample_donation = c(500)
+    endowment = c(100)
+    sample_donation = c(50)
     sample_earning = endowment-sample_donation
 
 class Subsession(BaseSubsession):
@@ -38,14 +38,15 @@ class Player(BasePlayer):
     charity_group = models.StringField(
         choices = [['DARA Charity Foundation','DARA Charity Foundation'],['Saby Charitable Foundation','Saby Charitable Foundation'],
                    ['Public Fund “ANA UYI”','Public Fund “ANA UYI”'],['Charitable Foundation “Niyet”','Charitable Foundation “Niyet”'],
-                   ['Aruzhan Sain Public Foundation “Voluntary Society Mercy”','Aruzhan Sain Public Foundation “Voluntary Society Mercy”']],
+                   ['Aruzhan Sain Public Foundation “Voluntary Society Mercy”','Aruzhan Sain Public Foundation “Voluntary Society Mercy”'],
+                   ['None','None']],
         widget=widgets.RadioSelect,
         label = 'You may keep all of this money or you may make a donation to one of the following five organizations in Kazakhstan'
     )
-    donation = models.IntegerField(
+    donation = models.IntegerField(blank=True,
         min=0,
         max=Constants.endowment,
-        label='How many tenge would you like to donate? ',
+        label='How many points would you like to donate? ',
         doc='Amount to be donated'
     )
     def role(self):
@@ -56,6 +57,10 @@ class Player(BasePlayer):
 
 
     def set_payoff(self):
-        self.payoff = Constants.endowment - self.donation
+
+        if self.donation != None:
+            self.payoff = Constants.endowment - self.donation
+        else:
+            self.payoff = Constants.endowment
 
 

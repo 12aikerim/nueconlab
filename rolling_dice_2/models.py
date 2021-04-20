@@ -21,14 +21,14 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'rolling_dice_2'
     players_per_group = None
-    num_rounds = 2
+    num_rounds = 5
 
     instructions_template = 'rolling_dice_2/Instructions.html'
 
     max_allowed_guess = 6
     min_allowed_guess = 1
 
-    win = c(500)  # payment if win
+    win = c(100)  # payment if win
     lose = c(0)  # payment if lose
     participation_fee = c(2000)
 
@@ -69,4 +69,5 @@ class Player(BasePlayer):
         else:
             self.payoff = Constants.win
 
-    pass
+    def convert(self):
+        return self.participant.payoff.to_real_world_currency(self.session)
